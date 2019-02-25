@@ -1,0 +1,762 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1250">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+@font-face
+	{font-family:inherit;
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:18.0pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+h3
+	{mso-style-link:"Heading 3 Char";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:13.5pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+h6
+	{mso-style-link:"Heading 6 Char";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:7.5pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+code
+	{font-family:"Courier New";}
+pre
+	{mso-style-link:"HTML Preformatted Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-link:"Heading 3";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.Heading6Char
+	{mso-style-name:"Heading 6 Char";
+	mso-style-link:"Heading 6";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-link:"HTML Preformatted";
+	font-family:"Courier New";}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:18.0pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>IPC:
+pamięć wspólna, semafory - materiały pomocnicze</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><i><span
+style='font-size:7.5pt;font-family:"inherit",serif;color:#373A3C'>Uwaga:
+podstawowe aspekty IPC Systemu V oraz POSIX, np. sposób tworzenia kluczy czy
+identyfikacji obiektów, zostały już przedstawione w materiałach pomocniczych do
+ćwiczenia 6. Nie będą one ponownie omawiane w niniejszym dokumencie.</span></i></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:18.0pt;font-family:"inherit",serif;color:#373A3C'>Semafory</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Semafory
+są jednym z najważniejszych mechanizmów synchronizacji dostępu do
+współdzielonych zasobów. Może na rozumieć jako zmienne licznikowe dla których
+zdefiniowane dwie&nbsp;<u>atomowe</u>&nbsp;operacje:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Dekrementacja
+     semafora: powoduje zmniejszenie jego semafora o 1, pod warunkiem że
+     wyjściowa wartość była &gt;0. Jeśli wyjściowa wartość semafora wynosi 0,
+     dekrementacja powoduje zablokowanie wykonującego ją procesu. Proces będzie
+     zablokowany do momentu zwiększenia wartości semafora (przez inny proces). Po
+     odblokowaniu proces zmniejszy wartość semafora o 1.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Inkrementacja
+     semafora: powoduje zwiększenie wartości semafora o 1. Jeśli semafor
+     blokuje jeden lub więcej procesów, zwiększenie jego wartości spowoduje
+     odblokowanie jednego oczekującego procesu.</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Semafory w
+IPC systemu V.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W
+systemie V semantyka semaforów jest rozszerzona w stosunku do klasycznej ich
+definicji:</span></p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Semafory IPC
+     systemu V można zmniejszać lub powiększać o wartości większe niż 1. Jednak
+     po każdej operacji wartość semafora musi być &gt;=0. Operacja która
+     narusza ten warunek jest blokowana. Blokada trwa do momentu, gdy wartość
+     semafora pozwoli wykonać operację z zachowaniem warunku wartości końcowej
+     &gt;=0.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>W systemie V
+     można wykonać operacje na wielu semaforach równocześnie. Operacje te
+     wykonywane są w sposób atomowy, tzn. wykonywane są wszystkie wskazane
+     operacje (jeśli jest to możliwe) lub wszystkie wskazane operacje są
+     blokowane (jeśli ze względu na aktualne wartości semaforów nie można
+     wykonać wszystkich operacji na raz).</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>System V
+     definiuje operację blokowania procesu do momentu, gdy semafor przyjmie
+     wartość 0.</span></li>
+</ol>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Operacje
+na semaforach systemu V są zdefiniowane w pliku nagłówkowym&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sys/sem.h</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;Dodatkowo
+warto również dołączyć pliki nagłówkowe&nbsp;</span><span style='font-size:
+10.0pt;font-family:Consolas;color:#E83E8C'>sys/ipc.h</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;i&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sys/types.h</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Aby
+stworzyć zbiór semaforów korzystamy z funkcji&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>semget</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>int semget(key_t key, int nsems, int flag);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+ta zwraca identyfikator zbioru semaforów, który można następnie wykorzystać w
+innych funkcjach operujących na semaforach. Argument&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>key</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;wskazuje
+klucz zbioru semaforów, zaś w argumencie&nbsp;</span><span style='font-size:
+10.0pt;font-family:Consolas;color:#E83E8C'>flag</span><span style='font-size:
+11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;przekazywane są
+flagi modyfikujące proces tworzenia obiektu IPC (patrz materiały do ćwiczenia
+6). Liczba semaforów do utworzenia przekazywana jest w argumencie&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>nsems</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcję&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>semget</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;można
+również wykorzystać do pobrania identyfikatora istniejącego już zbioru
+semaforów (np. utworzonego przez inny proces). Wówczas wartość&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>nsems</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;powinna
+wynosić 0. Bezpośrednio po utworzeniu, wartości semaforów są niezdefiniowane.
+Należy je zainicjalizować, np. za pomocą funkcji&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>semctl</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;(patrz
+poniżej).</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Do
+wykonania operacji na zbiorze semaforów służy funkcja&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>semop</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>int semop(int semid, struct sembuf *sops, unsigned nsops);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+ta wykonuje operacje na zbiorze semaforów o identyfikatorze&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>semid</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;Liczba
+operacji do wykonania jest zdefiniowana w argumencie&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>nsops</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;Same
+operacje przekazywane w tablicy&nbsp;</span><span style='font-size:10.0pt;
+font-family:Consolas;color:#E83E8C'>sops</span><span style='font-size:11.5pt;
+font-family:"Courier New";color:#373A3C'>&nbsp;</span><span style='font-size:
+11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>(zawierającej&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>nsops</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;elementów).
+Każda operacja zdefiniowana jest jako struktura postaci:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>struct sembuf </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>   unsigned short sem_num;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>   short sem_op;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>   short sem_flg;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>}; </span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'> </span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>gdzie:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sem_num</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;to numer
+     semafora (w zbiorze) na którym należy wykonać operację,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sem_op</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;to
+     operacje do wykonania,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sem_flg</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;to flagi
+     operacji.</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wartość&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sem_op &lt; 0</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;oznacza
+operację zmniejszenia wartości semafora o&nbsp;</span><span style='font-size:
+10.0pt;font-family:Consolas;color:#E83E8C'>sem_op</span><span style='font-size:
+11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;Wartość&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sem_op &gt; 0</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;oznacza
+operację zwiększenia wartości semafora o&nbsp;</span><span style='font-size:
+10.0pt;font-family:Consolas;color:#E83E8C'>sem_op</span><span style='font-size:
+11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp; Wartość&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sem_op == 0</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;oznacza
+operację oczekiwania, aż wartość semafora będzie wynosić 0. Dla pola&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sem_flg</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;zdefiniowano
+dwie istotne flagi: flaga&nbsp;</span><span style='font-size:10.0pt;font-family:
+Consolas;color:#E83E8C'>IPC_NOWAIT</span><span style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;oznacza, iż operacja nie
+powinna blokować procesu. Jeśli operacji nie można wykonać (ze względu na
+wartość semafora) i ustawiona jest flaga&nbsp;</span><span style='font-size:
+10.0pt;font-family:Consolas;color:#E83E8C'>IPC_NOWAIT</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>,
+funkcja&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>semop</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;zwróci błąd. Flaga&nbsp;</span><span style='font-size:
+10.0pt;font-family:Consolas;color:#E83E8C'>SEM_UNDO</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>oznacza,
+że w przypadku zakończenia procesu operacja wykonana na semaforze powinna
+zostać cofnięta.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Na
+koniec warto również zwrócić uwagę na funkcję&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>semctl</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>,
+która pozwalającej wykonać pewne dodatkowe operacje na zbiorze semaforów.
+Funkcja ta ma sygnaturę:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>int semctl(int semid, int semnum, int cmd, union semun arg);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>gdzie:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>semid</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;to
+     identyfikator zbioru semaforów,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>semnum</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;to numer
+     semafora w zbiorze,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>cmd</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;to
+     operacja do wykonania,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>arg</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;to unia
+     bitowa przekazująca pewne dodatkowe argumenty.</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>semctl</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;pozwala
+wykonać szereg operacji na semaforze, z który najistotniejszymi są:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>SETVAL</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;ustawienie
+     wartości semafora na liczbę przekazaną w polu&nbsp;</span><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>arg.val</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>GETVAL</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;pobranie
+     wartości semafora,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>IPC_RMID</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;usunięcie
+     zbioru semaforów z systemu.</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Semafory w
+IPC POSIX.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Semafory
+POSIXa realizują klasyczną semantykę semaforów. Aby z nich korzystać do
+programu należy dołączyć pliki nagłówkowe:&nbsp;</span><span style='font-size:
+10.0pt;font-family:Consolas;color:#E83E8C'>semaphore.h</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>,&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sys/stat.h</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;oraz&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>fcntl.h</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;Ponadto
+program należy zlinkować z biblioteką&nbsp;</span><span style='font-size:10.0pt;
+font-family:Consolas;color:#E83E8C'>pthread</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Do
+utworzenia semafora służy funkcja&nbsp;</span><span style='font-size:10.0pt;
+font-family:Consolas;color:#E83E8C'>sem_open</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>sem_t *sem_open(const char *name, int oflag, mode_t mode,
+unsigned int value);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+ta zwraca adres semafora lub&nbsp;</span><span style='font-size:10.0pt;
+font-family:Consolas;color:#E83E8C'>SEM_FAILED</span><span style='font-size:
+11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;w przypadku
+wystąpienia błędu. Argument&nbsp;</span><span style='font-size:10.0pt;
+font-family:Consolas;color:#E83E8C'>name</span><span style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;określa nazwę semafora,
+zaś argument&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>oflag</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;określa tryb otwarcia (patrz materiały do ćwiczenia 6).
+Argument&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>value</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;określa początkową wartość semafora. Inkrementację
+semafora (o wartość 1) realizuje funkcja&nbsp;</span><span style='font-size:
+10.0pt;font-family:Consolas;color:#E83E8C'>sem_post</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int sem_post(sem_t *sem);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+ta przyjmuje wskaźnik na semafor i zwraca 0 w przypadku sukcesu oraz -1 w
+przypadku wystąpienia błędu. Dekrementacja semafora realizowana jest
+analogicznie zdefiniowaną funkcją&nbsp;</span><span style='font-size:10.0pt;
+font-family:Consolas;color:#E83E8C'>sem_wait</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int *sem_wait(sem_t *sem);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+ta posiada również wariant nieblokujący</span><span style='font-size:10.0pt;
+font-family:Consolas;color:#E83E8C'>sem_trywait</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int *sem_trywait(sem_t *sem);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Jeśli
+dekrementacja semafora nie jest możliwa (semafor ma wartość 0) funkcja&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sem_trywait</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;nie
+blokuje procesu, lecz zwraca wartość -1 i ustawia zmienną&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>errno</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;na&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>EAGAIN</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>.<br>
+POSIX pozwala również odczytać aktualną wartość semafora. Służy do tego
+funkcja&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>sem_getvalue</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int sem_getvalue(sem_t *sem, int *valp);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Aktualna
+wartość semafora zapisywana jest pod adresem wskazywanym przez argument&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>valp</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><br>
+Po zakończeniu pracy z semaforem należy go zamknąć. Służy do tego funkcja&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sem_close</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int sem_close(sem_t *sem);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcje&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sem_getvalue</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;oraz&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sem_close</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;zwracają
+0 w przypadku sukcesu oraz -1 w przypadku wystąpienia błędu.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:18.0pt;font-family:"inherit",serif;color:#373A3C'>Pamięć
+wspólna</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Co do
+zasady, każdy proces w systemie posiada odrębną wirtualną przestrzeń adresową.
+Zmiany zawartości pamięci dokonywane przez jeden proces nie są widoczne w
+innych procesach. Mechanizm pamięci wspólnej stanowi wyjątek od tej zasady -
+umożliwia podłączenie segmentu pamięci do przestrzeni adresowej wielu procesów.
+Pozwala to na komunikację między procesami bez konieczności dodatkowego
+kopiowania danych. Mechanizm ten nie zapewnia jednak żadnej synchronizacji
+dostępu do wspólnej pamięci. Z reguły konieczne więc będzie wykorzystanie
+dodatkowych mechanizmów synchronizacji (np. semaforów) aby zapewnić prawidłową
+sekwencję odczytów/zapisów z/do pamięci wspólnej.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Pamięć
+wspólna w IPC systemu V.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W IPC
+systemu V operacje na pamięci wspólnej są zdefiniowane w pliku
+nagłówkowym&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>sys/shm.h</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;Dodatkowo warto również dołączyć pliki nagłówkowe&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sys/ipc.h</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;oraz&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>sys/types.h</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Aby
+stworzyć segment pamięci wspólnej korzystamy z funkcji&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>shmget</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>int shmget(key_t key, size_t size, int shmflg); </span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+ta zwraca identyfikator segmentu pamięci wspólnej. Argument&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>key</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;oznacza
+klucz segmentu pamięci wspólnej a argument&nbsp;</span><span style='font-size:
+10.0pt;font-family:Consolas;color:#E83E8C'>flag</span><span style='font-size:
+11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;przekazuje flagi
+modyfikujące proces tworzenia obiektu IPC (patrz materiały do ćwiczenia 6).
+Rozmiar segmentu pamięci wspólnej przekazywany jest w argumencie&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>size</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;Funkcja
+ta pozwala również uzyskać identyfikator istniejącego już segmentu pamięci
+wspólnej. Wówczas argument&nbsp;</span><span style='font-size:10.0pt;
+font-family:Consolas;color:#E83E8C'>size</span><span style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;powinien mieć wartość 0.
+Dołączenie segmentu pamięci wspólnej do przestrzeni adresowej procesu realizuje
+funkcja&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>shmat</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>void *shmat(int shmid, const void *shmaddr, int shmflg);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+ta zwraca adres pod którym dołączono segment pamięci wspólnej. W przypadku
+błędu zwracana jest wartość&nbsp;</span><span style='font-size:10.0pt;
+font-family:Consolas;color:#E83E8C'>(void *) -1</span><span style='font-size:
+11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>. W argumencie&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>semid</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;przekazywany
+jest identyfikator segmentu. Argument&nbsp;</span><span style='font-size:10.0pt;
+font-family:Consolas;color:#E83E8C'>shmaddr</span><span style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;pozwala wskazać adres,
+pod którym system powinien dołączyć segment pamięci wspólnej. Zaleca się by
+miał on wartość&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>NULL</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>, oznaczającą, że system operacyjny sam dobierze odpowiedni
+adres. W argumencie&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>shmflg</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;przekazywane są flagi modyfikujące działanie funkcji&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>shmat</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;Najciekawszą
+z nich jest flaga&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>SHM_RDONLY</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>, pozwalająca dołączyć segment pamięci w trybie tylko do
+odczytu. Po zakończeniu pracy z segmentem należy go odłączyć, korzystając z
+funkcji&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>shmdt</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>int shmdt(const void *shmaddr);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+ta przyjmuje w argumencie adres zwrócony przez funkcję&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>shmat</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;i
+zwraca 0 w przypadku powodzenia oraz -1 w przypadku błędu. Na koniec warto
+również wspomnieć o funkcji&nbsp;</span><span style='font-size:10.0pt;
+font-family:Consolas;color:#E83E8C'>shmctl</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>void *shmctl(int shmid, int cmd, struct shmid_ds *buf);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Pozwala
+ona, między innymi, usunąć segment pamięci wspólnej z systemu. W tym celu
+należy ją wywołać przekazując jako drugi argument polecenie&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>IPC_RMID</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;(argument&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>buf</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;jest
+wówczas ignorowany). Po wykonaniu tego polecenia nie będzie możliwe dołączenie
+segmentu do kolejnych procesów. Segment zostanie usunięty po odłączeniu przez
+wszystkie procesy, które uprzednio dołączyły go do swojej przestrzeni
+adresowej.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Pamięć
+wspólna w IPC POSIX.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Aby
+korzystać z pamięci wspólnej w IPC POSIX do programu należy dołączyć pliki
+nagłówkowe:&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>sys/mman.h</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>,&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>sys/stat.h</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;oraz&nbsp;</span><span style='font-size:10.0pt;font-family:
+Consolas;color:#E83E8C'>fcntl.h</span><span style='font-size:11.5pt;font-family:
+"Segoe UI",sans-serif;color:#373A3C'>&nbsp;Ponadto program należy zlinkować z
+biblioteką&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>rt</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Do
+utworzenia segmentu pamięci wspólnej (lub otwarcia istniejącego już segmentu)
+służy funkcja&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>shm_open</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int shm_open(const char *name, int oflag, mode_t mode);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+ta zwraca deskryptor plików reprezentujący segment pamięci wspólnej. W
+przypadku błędu zwracana jest wartość -1. Argument&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>name</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;określa
+nazwę segmentu, zaś argument&nbsp;</span><span style='font-size:10.0pt;
+font-family:Consolas;color:#E83E8C'>oflag</span><span style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;określa tryb otwarcia
+(patrz materiały do ćwiczenia 6). Po utworzeniu segmentu należy określić jego
+rozmiar. W tym celu należy skorzystać z funkcji&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>ftruncate</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int ftruncate(int fd, off_t length);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W
+pierwszym argumencie przekazywany jest deskryptor zwrócony przez funkcję&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>shm_open</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>. W
+drugim argumencie przekazywany jest pożądany rozmiar segmentu (w bajtach).
+Funkcja ta zwraca 0 w przypadku powodzenia oraz -1 w przypadku wystąpienia
+błędu. Otwarty segment pamięci wspólnej należy dołączyć do przestrzeni
+adresowej procesu. Operację tą można zrealizować za pomocą funkcji&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>mmap</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>void *mmap(void *addr, size_t len, int prot, int flags, int fd,
+off_t offset);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+ta zwraca adres dołączonego segmentu lub, w przypadku błędu, wartość&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>(void *) -1</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>. W
+argumentach przekazywane są:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>addr</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;określa
+     adres pod którym powinien zostać dołączony segment pamięci wspólnej;
+     zaleca się przekazanie wartości&nbsp;</span><span style='font-size:10.0pt;
+     font-family:Consolas;color:#E83E8C'>NULL</span><span style='font-size:
+     11.5pt;font-family:"Segoe UI",sans-serif'>, wskazującej, że system sam
+     powinien dobrać odpowiedni adres,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>len</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;to liczba
+     bajtów segmentu mapowanych do przestrzeni adresowej procesu,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>prot</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;określa
+     prawa dostępu do mapowanej pamięci; prawa te są określane flagami&nbsp;</span><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>PROT_READ</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;(odczyt),&nbsp;</span><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>PROT_WRITE</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>(zapis),</span><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>PROT_EXEC</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;(prawo
+     wykonania),&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+     color:#E83E8C'>PROT_NONE</span><span style='font-size:11.5pt;font-family:
+     "Segoe UI",sans-serif'>&nbsp;(brak uprawnień),</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>flags -
+     specyfikacja użycia segmentu (np. MAP_SHARED, MAP_PRIVATE, MAP_FIXED)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>fd</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;jest
+     deskryptorem plików zwróconym przez funkcję&nbsp;</span><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>shm_open</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>offset</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;określa
+     przesunięcie mapowanego obszaru względem początku segmentu pamięci
+     wspólnej; z reguły przyjmuje wartość 0.</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Po
+zakończeniu pracy z segmentem pamięci wspólnej należy go odłączyć od
+przestrzeni adresowej procesu. Służy do tego funkcja&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>munmap</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int munmap(void *addr, size_t len);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W
+argumencie&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>addr</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;należy przekazać adres, pod którym segment został
+dołączony a w argumencie&nbsp;</span><span style='font-size:10.0pt;font-family:
+Consolas;color:#E83E8C'>len</span><span style='font-size:11.5pt;font-family:
+"Segoe UI",sans-serif;color:#373A3C'>&nbsp;rozmiar segmentu. Odłączony segment
+można następnie oznaczyć do usunięcia. Służy do tego funkcja&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>shm_unlink</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int shm_unlink(const char *name);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W
+argumencie&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>name</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;przekazywana jest nazwa segmentu do usunięcia. Po
+wykonaniu funkcji&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>shm_unlink</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;nie będzie już możliwe otwarcie tego segmentu
+funkcją&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>shm_open</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>. Co więcej, po odłączeniu go przez wszystkie procesy, które
+uprzednio dołączyły go do swojej przestrzeni adresowej, zostanie on usunięty z
+zasobów systemu. Funkcje&nbsp;</span><span style='font-size:10.0pt;font-family:
+Consolas;color:#E83E8C'>munmap</span><span style='font-size:11.5pt;font-family:
+"Segoe UI",sans-serif;color:#373A3C'>&nbsp;i&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>shm_unlink</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;zwracają
+0 w przypadku powodzenia oraz -1 w przypadku błędu.</span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

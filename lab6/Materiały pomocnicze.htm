@@ -1,0 +1,1362 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1250">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+@font-face
+	{font-family:inherit;
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{mso-style-link:"Heading 1 Char";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:24.0pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:18.0pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+h3
+	{mso-style-link:"Heading 3 Char";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:13.5pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+h6
+	{mso-style-link:"Heading 6 Char";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:7.5pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+code
+	{font-family:"Courier New";}
+pre
+	{mso-style-link:"HTML Preformatted Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-link:"Heading 1";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-link:"Heading 3";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.Heading6Char
+	{mso-style-name:"Heading 6 Char";
+	mso-style-link:"Heading 6";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-link:"HTML Preformatted";
+	font-family:"Courier New";}
+span.pre
+	{mso-style-name:pre;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:18.0pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Kolejki
+komunikatów - materiały pomocnicze</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:24.0pt;font-family:"inherit",serif;color:#373A3C'>Mechanizmy
+IPC</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Podobnie
+jak łącza, mechanizmy IPC (Inter Process Communication) jest grupą mechanizmów
+komunikacji i synchronizacji procesów działających w ramach tego samego systemu
+operacyjnego. Mechanizmy IPC obejmują:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>kolejki komunikatów
+     — umożliwiają przekazywanie określonych porcji danych,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>pamięć
+     współdzieloną — umożliwiają współdzielenie kilku procesom tego samego
+     fragmentu wirtualnej przestrzeni adresowej,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>semafory —
+     umożliwiają synchronizacje procesów w dostępie do współdzielonych zasobów
+     (np. do pamięci współdzielonej)</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:24.0pt;font-family:"inherit",serif;color:#373A3C'>SYSTEM V</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Wprowadzenie</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Kolejki
+komunikatów to specjalne listy (kolejki) w jadrze, zawierające odpowiednio
+sformatowane dane i umożliwiające ich wymianę poprzez dowolne procesy w
+systemie. Istnieje możliwość umieszczania komunikatów w określonych kolejkach
+(z zachowaniem kolejności ich wysyłania przez procesy) oraz odbierania
+komunikatu na parę różnych sposobów (zależnie od typu, czasu przybycia itp.).</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W
+systemie V kolejki komunikatów reprezentowane są przez strukturę msqid_ds.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Do
+utworzenia obiektu potrzebny jest unikalny&nbsp;<b>klucz</b>&nbsp;w postaci
+32-bitowej liczby całkowitej. Klucz ten stanowi nazwę obiektu, która
+jednoznacznie go identyfikuje i pozwala procesom uzyskać dostęp do utworzonego
+obiektu. Każdy obiekt otrzymuje również swój identyfikator, ale jest on
+unikalny tylko w ramach jednego mechanizmu. Oznacza to, że może istnieć kolejka
+i zbiór semaforów o tym samym identyfikatorze.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wartość
+klucza można ustawić dowolnie. Zalecane jest jednak używanie funkcji&nbsp;<b>ftok</b>()
+do generowania wartości kluczy. Nie gwarantuje ona wprawdzie unikalności
+klucza, ale znacząco zwiększa takie prawdopodobieństwo.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:7.5pt;font-family:"inherit",serif;color:#373A3C'>key_t
+ftok(char *pathname, char proj);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><u><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>gdzie:</span></u></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse'>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>pathname</span></b></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-</span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>nazwa
+  ścieżkowa pliku,</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>proj</span></b></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-</span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>jednoliterowy
+  identyfikator projektu.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wszystkie
+tworzone obiekty IPC mają ustalane prawa dostępu na podobnych zasadach jak w
+przypadku plików. Prawa te ustawiane są w strukturze&nbsp;<b>ipc_perm&nbsp;</b>niezależnie
+dla każdego obiektu IPC.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Obiekty
+IPC pozostają w pamięci jądra systemu do momentu, gdy:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>jeden z
+     procesów zleci jądru usunięcie obiektu z pamięci,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>nastąpi
+     zamknięcie systemu.</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Polecenia
+systemowe</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Polecenie&nbsp;<b>ipcs</b>&nbsp;wyświetla
+informacje o wszystkich obiektach IPC istniejących w systemie, dokonując przy
+tym podziału na poszczególne mechanizmy. Wyświetlane informacje obejmują m.in.
+klucz, identyfikator obiektu, nazwę właściciela, prawa dostępu.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:7.5pt;font-family:"inherit",serif;color:#373A3C'>ipcs [ -asmq
+] [ -tclup ]</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:7.5pt;font-family:"inherit",serif;color:#373A3C'>ipcs [ -smq ]
+-i id</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wybór
+konkretnego mechanizmu umożliwiają opcje:</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse'>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-s</span></b></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-</span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>semafory,</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-m</span></b></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-</span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>pamięć
+  dzielona,</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-q</span></b></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-</span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>kolejki
+  komunikatów,</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-a</span></b></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-</span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>wszystkie
+  mechanizmy (ustawienie domyślne).</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Dodatkowo
+można podać identyfikator pojedyńczego obiektu&nbsp;<b>-i id</b>, aby otrzymać
+informacje tylko o nim.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Pozostale
+opcje specyfikują format wyświetlanych informacji.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Dowolny
+obiekt IPC można usunąć posługując się poleceniem:</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:7.5pt;font-family:"inherit",serif;color:#373A3C'>ipcrm [ shm |
+msg | sem ] id</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><u><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>gdzie:</span></u></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse'>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>shm,
+  msg, sem</span></b></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-</span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>specyfikacja
+  mechanizmu, kolejno: pamięć dzielona, kolejka komunikatów, semafory,</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>id</span></b></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-</span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>identyfikator
+  obiektu.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Struktury
+danych</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Za
+każdą kolejkę komunikatów odpowiada jedna struktura typu msqid_ds. Komunikaty
+danej kolejki przechowywane są na liście, której elementami są struktury typu
+msg - każda z nich posiada informacje o typie komunikatu, wskaźnik do następnej
+struktury msg oraz wskaźnik do miejsca w pamięci, gdzie przechowywana jest
+właściwa treść komunikatu. Dodatkowo, każdej kolejce komunikatów przydziela się
+dwie kolejki typu wait_queque, na których śpią procesy zawieszone podczas
+wykonywania operacji czytania bądź pisania do danej kolejki. </span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Poniższy
+rysunek przedstawia wyżej omówione zależności:</span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;line-height:normal;background:white'><span style='font-size:
+11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><img width=518
+height=252 id="Picture 1" src="Materiały%20pomocnicze_files/image001.gif"
+alt="(rysunek)"></span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W pliku
+include/linux/msg.h zdefiniowane są ograniczenia na liczbę i wielkość kolejek
+oraz komunikatów w nich umieszczanych:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span lang=PL style='font-size:10.0pt;font-family:
+Consolas;color:#212529'>#define MSGMNI 128    /* &lt;= 1K    max # kolejek
+komunikatow          */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span lang=PL style='font-size:10.0pt;font-family:
+Consolas;color:#212529'>#define MSGMAX 4056   /* &lt;= 4056  max rozmiar
+komunikatu (w bajtach) */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span lang=PL style='font-size:10.0pt;font-family:
+Consolas;color:#212529'>#define MSGMNB 16384  /* ?        max wielkosc kolejki
+(w bajtach)   */</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Struktura
+msqid_ds</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Dokładna
+definicja struktury&nbsp;msqid_ds z pliku include/linux/msg.h:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>/* jedna struktura msg dla kazdej kolejki w systemie */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>struct msqid_ds {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  struct ipc_perm     msg_perm;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  struct msg         *msg_first;    /* pierwszy komunikat w
+kolejce */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  struct msg         *msg_last;     /* ostatni komunikat w
+kolejce */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  __kernel_time_t     msg_stime;    /* czas ostatniego msgsnd */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  __kernel_time_t     msg_rtime;    /* czas ostatniego msgrcv */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  __kernel_time_t     msg_ctime;    /* czas ostatniej zmiany */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  struct wait_queue  *wwait;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  struct wait_queue  *rwait;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  unsigned short      msg_cbytes;   /* liczba bajtow w kolejce
+*/</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  unsigned short      msg_qnum;     /* liczba komunikatow w
+kolejce */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  unsigned short      msg_qbytes;   /* maksymalna liczba bajtow
+w kolejce */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  __kernel_ipc_pid_t  msg_lspid;    /* pid ostatniego msgsnd */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  __kernel_ipc_pid_t  msg_lrpid;    /* pid ostatniego receive*/</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>};</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Dodatkowe
+wyjaśnienia:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>msg_perm</span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Jest
+to instancja struktury&nbsp;</span><span style='font-size:10.0pt;font-family:
+Consolas;color:#E83E8C'>ipc_perm</span><span style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:#373A3C'>, zdefiniowanej w pliku&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>linux/ipc.h</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>.
+Zawiera informacje o prawach dostępu do danej kolejki oraz o jej założycielu.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>wwait, rwait</span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Przydzielone
+danej kolejce komunikatów dwie kolejki typu&nbsp;</span><span style='font-size:
+10.0pt;font-family:Consolas;color:#E83E8C'>wait_queue</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>, na
+których spią procesy zawieszone podczas wykonywania operacji odpowiednio
+czytania oraz pisania w danej kolejce komunikatów.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Struktura
+msg</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Dokladna
+definicja struktury msg z pliku&nbsp;</span><span style='font-size:10.0pt;
+font-family:Consolas;color:#E83E8C'>include/linux/msg.h</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>/* jedna struktura msg dla kazdego komunikatu */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>struct msg {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  struct msg *msg_next;   /* nastepny komunikat w kolejce */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  long        msg_type;          </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  char       *msg_spot;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  time_t      msg_stime;  /* czas wyslania tego komunikatu */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  short       msg_ts;     /* dlugosc wlasciwej tresci komunikatu
+*/</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>};</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Dodatkowe
+wyjaśnienia:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>msg_type</span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Typ
+przechowywanego komunikatu. Wysyłanemu do kolejki komunikatowi nadawca
+przypisuje dodatnią liczbę naturalną, stającą się jego typem. Przy odbiorze
+komunikatu można zażądać komunikatów określonego typu (patrz opis funkcji
+msgrcv()).</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>msg_spot</span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wskaźnik
+do miejsca w pamięci, gdzie przechowywana jest właściwa treść komunikatu. Na
+każdy komunikat przydzielane jest oddzielne miejsce w pamięci.</span></p>
+
+<div class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;line-height:normal;background:white'><span style='font-size:
+11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Funkcje i
+ich implementacja</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Istnieją
+cztery funkcje systemowe do obsługi komunikatów:</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>msgget()</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;uzyskanie
+identyfikatora kolejki komunikatów używanego przez pozostałe funkcje,</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>msgctl()</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;ustawianie
+i pobieranie wartości parametrów związanych z kolejkami komunikatów oraz
+usuwanie kolejek,</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>msgsnd()</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;wysłanie
+komunikatu,</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>msgrcv()</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;odebranie
+komunikatu.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Funkcja
+msget()</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+służy do utworzenia nowej kolejki komunikatów lub uzyskania dostępu do
+istniejącej kolejki.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>DEFINICJA: int msgget(key_t key, int msgflg)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    WYNIK: identyfikator kolejki w przypadku sukcesu</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>           -1, gdy blad: errno = EACCESS (brak praw)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EEXIST  (kolejka o podanym
+kluczu istnieje,</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                          wiec niemozliwe jest
+jej utworzenie)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EIDRM   (kolejka zostala w
+miedzyczasie skasowana)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 ENOENT  (kolejka nie istnieje),</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EIDRM  (kolejka zostala w
+miedzyczasie skasowana)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 ENOMEM  (brak pamieci na
+kolejke)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 ENOSPC  (liczba kolejek w
+systemie jest rowna</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                          maksymalnej)</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Pierwszym
+argumentem funkcji jest wartość klucza, porównywana z istniejacymi wartościami
+kluczy. Zwracana jest kolejka o podanym kluczu, przy czym flaga&nbsp;<b>IPC_CREAT</b>&nbsp;powoduje
+utworzenie kolejki w przypadku braku kolejki o podanym kluczu, zaś flaga&nbsp;<b>IPC_EXCL</b>&nbsp;użyta
+z&nbsp;<b>IPC_CREAT</b>&nbsp;powoduje błąd EEXIST, jeśli kolejka o podanym
+kluczu już istnieje. Wartość klucza równa&nbsp;<b>IPC_PRIVATE</b>&nbsp;zawsze
+powoduje utworzenie nowej kolejki.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;W
+przypadku konieczności utworzenia nowej kolejki, alokowana jest nowa struktura
+typu&nbsp;msqid_ds.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Funkcja
+msgsnd()</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wysłanie
+komunikatu do kolejki.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>DEFINICJA: int msgsnd(int msqid, struct msgbuf *msgp, int msgsz,</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                      int msgflg)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    WYNIK: 0 w przypadku sukcesu</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>           -1, gdy blad: errno = EAGAIN (pelna kolejka
+(IPC_NOWAIT))</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EACCES (brak praw zapisu)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EFAULT (zly adres msgp)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EIDRM  (kolejka zostala w
+miedzyczasie skasowana)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EINTR  (otrzymano sygnal
+podczas czekania)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EINVAL (zly identyfikator
+kolejki, typ lub rozmiar</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                         komunikatu)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 ENOMEM (brak pamieci na
+komunikat)</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Pierwszym
+argumentem funkcji jest identyfikator kolejki. msgp jest wskaźnikiem do
+struktury typu&nbsp;</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#E83E8C'>msgbuf</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>, zawierającej wysyłany komunikat. Struktura ta jest
+zdefiniowana w pliku linux/msg.h nastepująco:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>/* message buffer for msgsnd and msgrcv calls */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>struct msgbuf {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  long mtype;         /* typ komunikatu   */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>  char mtext[1];      /* tresc komunikatu */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>};</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Jest
+to jedynie przykładowa postać tej struktury; programista może zdefiniować sobie
+a następnie wysyłać dowolną inną strukturę, pod warunkiem, że jej pierwszym
+polem będzie wartość typu long, zaś rozmiar nie będzie przekraczać wartości
+MSGMAX (=4096). Wartość msgsz w wywołaniu funkcji msgsnd jest równa rozmiarowi
+komunikatu (w bajtach), nie licząc typu komunikatu (sizeof(long)). Flaga&nbsp;<b>IPC_NOWAIT</b>&nbsp;zapewnia,
+ze w przypadku braku miejsca w kolejce funkcja natychmiast zwróci błąd EAGAIN.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Funkcja
+msgrcv()</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Odebranie
+komunikatu z kolejki.http://upel.agh.edu.pl/wiet/course/modedit.php?update=9533&amp;return=1</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>DEFINICJA: int msgrcv(int msgqid, struct msgbuf *msgp, int
+msgsz,</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                      long type, int msgflg)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    WYNIK: liczba bajtow skopiowanych do bufora w przypadku
+sukcesu</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>           -1, gdy blad: errno = E2BIG  (dlugosc komunikatu wieksza
+od msgsz)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EACCES (brak praw odczytu)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EFAULT (zly adres msgp)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EIDRM  (kolejka zostala w
+miedzyczasie skasowana)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EINTR  (otrzymano sygnal
+podczas czekania)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EINVAL (zly identyfikator
+kolejki lub msgsz &lt; 0)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 ENOMSG (brak komunikatu
+(IPC_NOWAIT))</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Pierwszym
+argumentem funkcji jest identyfikator kolejki. mgsp wskazuje na adres bufora,
+do którego ma być przekopiowany odbierany komunikat. mgsz to rozmiar owego
+bufora, z wyłączeniem pola mtype (sizeof(long)). mtype wskazuje na rodzaj
+komunikatu, który chcemy odebrać. Jądro przydzieli nam najstarszy komunikat
+zadanego typu, przy czym:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>jeśli mtype =
+     0, to otrzymamy najstarszy komunikat w kolejce</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>jeśli mtype
+     &gt; 0, to otrzymamy komunikat odpowiedniego typu</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>jeśli mtype&lt;
+     0, to otrzymamy komunikat najmniejszego typu mniejszego od wartości
+     absolutnej mtype</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>jeśli msgflg
+     jest ustawiona na&nbsp;<b>MSG_EXCEPT</b>, to otrzymamy dowolny komunikat o
+     typie rożnym od podanego</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Ponadto,
+flaga&nbsp;<b>IPC_NOWAIT</b>&nbsp;w przypadku braku odpowiedniego komunikatu
+powoduje natychmiastowe wyjście z błędem, zaś&nbsp;<b>MSG_NOERROR</b>&nbsp;powoduje
+brak błędu w przypadku, gdy komunikat nie mieści się w buforze (zostaje
+przekopiowane tyle, ile się mieści).</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Funkcja
+msgctl()</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>modyfikowanie
+oraz odczyt rozmaitych właściwości kolejki.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>DEFINICJA: int msgctl(int msgqid, int cmd, struct msqid_ds *buf)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    WYNIK: 0 w przypadku sukcesu</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>           -1, gdy blad: errno = EACCES (brak praw czytania
+(IPC_STAT))</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EFAULT (zly adres buf)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EIDRM  (kolejka zostala w
+miedzyczasie skasowana)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EINVAL (zly identyfikator
+kolejki lub msgsz &lt; 0)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                 EPERM  (brak praw zapisu
+(IPC_SET lub IPC_RMID))</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Dopuszczalne
+komendy to:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>IPC_STAT</span></b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>: uzyskanie
+     struktury msgid_ds odpowiadającej kolejce (zostaje ona skopiowana pod
+     adres wskazywany przez buf)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>IPC_SET</span></b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>: modyfikacja
+     wartości struktury ipc_perm odpowiadającej kolejce</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>IPC_RMID</span></b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>: skasowanie
+     kolejki</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Działanie
+funkcji sprowadza się do przekopiowania odpowiednich wartości od lub do
+użytkownika, lub skasowania kolejki. Usuniecie kolejki wygląda następująco:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>   msqid_ds.ipc_perm.seq+=1;     /* patrz opis struktury
+ipc_perm w rozdziale</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                                    o cechach wspolnych
+mechanizmow IPC */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>   msg_seq+=1;        /* zwiekszenie wartosci globalnej zmiennej
+zwiazanej z</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>                         ipc_perm.seq - patrz tenze rozdzial */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>   uaktualnienie statystyk;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>   msgque[msqid]=IPC_UNUSED;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>   obudzenie czekajacych na pisanie lub czytanie do/z usuwanej
+kolejki;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>   zwolnienie struktur przydzielonych kolejce;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>}</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:24.0pt;font-family:"inherit",serif;color:#373A3C'>POSIX</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>POSIX</span></b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;(ang.&nbsp;<b><i>P</i></b><i>ortable&nbsp;<b>O</b>perating&nbsp;<b>S</b>ystem&nbsp;<b>I</b>nterface
+for UNI<b>X</b></i>) - przenośny interfejs dla systemu UNIX. Jest to zestaw
+standardów opracowany przez stowarzyszenie IEEE (Institute of Electrical and
+Electronics Engineers) w 1985 roku w celu zapewnienia kompatybilności pomiędzy
+różnymi wersjami i dystrybucjami systemów operacyjnych. Standard ten definiuje
+zarówno interfejs programistyczny (API), jak i powłokę systemową oraz interfejs
+użytkownika.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:18.0pt;font-family:"inherit",serif;color:#373A3C'>Kolejki
+komunikatów</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Służą
+do wymiany komunikatów (ciągu danych o ustalonej długości i priorytecie)
+pomiędzy procesami. Kolejka to tak naprawdę lista, z której w czasie odczytu
+pobieramy najstarszy komunikat o najwyższym priorytecie (wg standardu POSIX).
+Pojedynczy komunikat zawiera priorytet (unsigned int), długość (size_t) oraz
+same dane, o ile długość jest większa niż 0 (char*).</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Funkcje do
+obsługi kolejek komunikatów</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Plik
+nagłówkowy</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>#</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#FF5600'>include</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'> </span><span style='font-size:10.0pt;font-family:Consolas;
+color:#00A33F'>&lt;mqueue.h&gt;</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Struktura&nbsp;struct
+mq_attr</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#FF5600'>struct</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'> mq_attr {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    long mq_flags;    /* sygnalizator kolejki: 0, O_NONBLOCK */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    long mq_maxmsg;   /* maksymalna liczba komunikatów w kolejce
+*/</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    long mq_msgsize;  /* maksymalny rozmiar komunikatu (w
+bajtach)  */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    long mq_curmsgs;   /* liczba komunikatów w kolejce */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>};</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Otwieranie
+kolejki</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>mqd_t&nbsp;</span><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#21439C'>mq_open</span><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>(const char
+*name, int oflag [, mode_t mode, struct mq_attr *attr]);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+ta próbuje otworzyć kolejkę komunikatów (która tak naprawdę jest plikiem o
+nazwie&nbsp;name). Zwraca deskryptor kolejki, jeśli się powiedzie lub&nbsp;-1&nbsp;w
+przypadku błędu.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Uwaga!
+Nazwa musi zaczynać się od znaku&nbsp;/</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Parametr&nbsp;oflag&nbsp;ma
+analogiczne znaczenie, jak w przypadku otwierania plików ( unixowymi metodami
+obsługi plików). Zatem akceptuje jedną z wartości:&nbsp;O_RDONLY,&nbsp;O_WRONLY,&nbsp;O_RDWR,
+którą można zsumować logicznie z wartościami:&nbsp;O_CREAT,&nbsp;O_EXCLoraz&nbsp;O_NONBLOCK&nbsp;(aby
+używać tych stałych należy dołączyć plik nagłówkowy&nbsp;fcntl.h).</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Parametr&nbsp;mode&nbsp;specyfikujemy,
+gdy tworzymy nową kolejkę i określa on prawa dostępu do niej. Możemy podać
+wartość ósemkowo lub dowolną sumę logiczną stałych:&nbsp;S_IRUSR, S_IWUSR,
+S_IRGRP, S_IWGRP, S_IROTH, S_IWOTH&nbsp;(aby korzystać z tych stałych należy
+dołączyć plik nagłówkowy&nbsp;sys/stat.h).</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Ostatnim
+parametrem jest&nbsp;attr. Jest to struktura określająca parametry kolejki.
+Jeśli nie podamy tego parametru lub podamy&nbsp;NULL, to ustawione zostaną
+parametry domyślne.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Zamykanie kolejki</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#FF5600'>int</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'> </span><span style='font-size:10.0pt;font-family:Consolas;
+color:#21439C'>mq_close</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>(mqd_t mqdes);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+ta zamyka kolejkę o deskryptorze&nbsp;mqdes. Zwraca&nbsp;0&nbsp;w przypadku
+sukcesu lub&nbsp;-1&nbsp;w przypadku błędu.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Warto
+zauważyć, że funkcja ta&nbsp;<b>nie niszczy</b>&nbsp;kolejki, która dalej jest
+dostępna w systemie operacyjnym, ale jedynie ją zamyka.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Gdy
+proces się kończy, automatycznie zamykane są wszystkie jego kolejki.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Usuwanie
+kolejki</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#FF5600'>int</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'> </span><span style='font-size:10.0pt;font-family:Consolas;
+color:#21439C'>mq_unlink</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>(const char *name);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Usuwa
+z systemu kolejkę o nazwie&nbsp;name. Zwraca&nbsp;0&nbsp;w przypadku sukcesu
+lub&nbsp;-1&nbsp;w przypadku błędu.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Kolejka
+zostanie usunięta dopiero po zamknięciu jej przez wszystkie podłączone procesy.</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Odczytywanie
+parametrów kolejki</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#FF5600'>int</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'> </span><span style='font-size:10.0pt;font-family:Consolas;
+color:#21439C'>mq_getattr</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>(mqd_t mqdes, struct mq_attr *attr);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Odczytuje
+parametry kolejki o deskryptorze&nbsp;mqdes&nbsp;i zapisuje je w miejscu
+wskazywanym przez&nbsp;attr. Zwraca&nbsp;0&nbsp;w przypadku sukcesu lub&nbsp;-1&nbsp;w
+przypadku błędu.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Ustawianie
+parametrów kolejki</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#FF5600'>int</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'> </span><span style='font-size:10.0pt;font-family:Consolas;
+color:#21439C'>mq_setattr</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>(mqd_t mqdes, const struct mq_attr *attr, struct mq_attr
+*oattr);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Ustawia
+parametry kolejki o deskryptorze&nbsp;mqdes&nbsp;wskazywane przez&nbsp;attr.
+Jeśli&nbsp;oattr&nbsp;nie wskazuje na&nbsp;NULL, to zapisywane są w tym miejscu
+stare parametry kolejki. Zwraca&nbsp;0&nbsp;w przypadku sukcesu lub&nbsp;-1&nbsp;w
+przypadku błędu.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Wysyłanie
+komunikatów</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#FF5600'>int</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'> </span><span style='font-size:10.0pt;font-family:Consolas;
+color:#21439C'>mq_send</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>(mqd_t mqdes, const char* ptr, size_t len, unsigned int prio);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wysyła
+komunikat wskazywany przez&nbsp;ptr&nbsp;do kolejki o deskryptorze&nbsp;mqdes&nbsp;o
+długości&nbsp;len&nbsp;i priorytecie&nbsp;prio. Zwraca&nbsp;0&nbsp;w przypadku
+powodzenia lub&nbsp;-1&nbsp;w przypadku błędu.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Priorytet
+nie może przekraczać&nbsp;MQ_PRIO_MAX!</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Odbieranie
+komunikatów</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#A535AE'>ssize_t</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'> </span><span style='font-size:10.0pt;font-family:Consolas;
+color:#21439C'>mq_receive</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>(mqd_t mqdes, char *ptr, size_t len, unsigned int *priop);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Odbiera
+komunikat z kolejki o deskryptorze&nbsp;mqdes&nbsp;o długości&nbsp;len&nbsp;(co
+najmniej tyle, ile w polu&nbsp;mq_msgsize&nbsp;w strukturze&nbsp;struct mq_attr).
+Dane zapisuje do&nbsp;ptr, a priorytet do&nbsp;priop&nbsp;(o ile&nbsp;priop&nbsp;nie
+jest&nbsp;NULL). Zwraca liczbę odczytanych bajtów w przypadku powodzenia
+lub&nbsp;-1&nbsp;w przypadku błędu.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Mechanizm
+powiadomień (<i>ang. notifications</i>)</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Mechanizm
+powiadomień pozwala na asynchroniczne zawiadamianie procesu, że w pustej
+kolejce umieszczono komunikat. Może to się odbyć poprzez:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>wysłanie
+     sygnału</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>utworzenie
+     wątku w celu wykonania określonej funkcji</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Korzystanie
+z mechanizmu powiadomień</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#FF5600'>int</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'> </span><span style='font-size:10.0pt;font-family:Consolas;
+color:#21439C'>mq_notify</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>(mqd_t mqdes, const struct sigevent *notification);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+ta powoduje zarejestrowanie (gdy&nbsp;notification&nbsp;nie jest równe&nbsp;NULL)
+lub wyrejestrowanie (gdy&nbsp;notifiation&nbsp;jest&nbsp;NULL) mechanizmu
+powiadomień dla kolejki o deskryptorze&nbsp;mqdes. Zwraca&nbsp;0&nbsp;w
+przypadku powodzenia lub&nbsp;-1&nbsp;w przypadku błędu. Struktura&nbsp;struct
+sigevent&nbsp;wygląda następująco:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#FF5600'>struct</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'> sigevent {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    int          sigev_notify;  /* sygnał czy wątek: SIGEV_NONE,
+SIGEV_SIGNAL, SIGEV_THREAD */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    int          sigev_signo;   /* numer sygnału (dla
+SIGEV_SIGNAL) */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    union sigval sigev_value;   /* przekazywane procedurze
+obsługi sygnału lub wątkowi */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    /* dla SIGEV_THREAD występują jeszcze: */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    void (*sigev_notify_function)(union sigval);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    pthread_attr_t *sigev_notify_attributes;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>};</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#FF5600'>union</span><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'> sigval {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    int   sival_int;   /* wartość całkowitoliczbowa */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>    void *sival_ptr; /* wskaźnik */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>};</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Korzystając
+z mechanizmu powiadomień należy pamiętać, że:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>W jednym
+     procesie możemy korzystać z powiadomień tylko z jednej kolejki.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Rejestracja
+     obowiązuje tylko na jedno powiadomienie. Po powiadomieniu trzeba
+     zarejestrować się ponownie, gdyż rejestracja jest kasowana.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Jeśli w pustej
+     kolejce pojawi się komunikat, a jednocześnie proces oczekuje na rezultat
+     funkcji&nbsp;mq_receive, to do procesu&nbsp;<b>nie zostanie</b>&nbsp;wysłane
+     powiadomienie. Nie ma to większego sensu, gdyż proces i tak oczekuje na
+     wiadomość.</span></li>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>Ostatnia modyfikacja: środa, 25 kwiecień 2018, 09:53</span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

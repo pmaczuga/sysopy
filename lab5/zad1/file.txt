@@ -1,0 +1,2 @@
+ls -l | grep zad1 | grep 4291 | grep 4291 | grep 4291
+ps aux | grep pawel | sort | grep usr 

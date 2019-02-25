@@ -1,0 +1,78 @@
+System sort     Records: 2000   Size: 4
+        Real time: 3.670000 sec
+        System time: 3.350000 sec
+        User time: 0.320000 sec
+Library sort    Records: 2000   Size: 4
+        Real time: 5.510000 sec
+        System time: 4.490000 sec
+        User time: 1.020000 sec
+
+System sort     Records: 2000   Size: 512
+        Real time: 3.980000 sec
+        System time: 3.650000 sec
+        User time: 0.330000 sec
+Library sort    Records: 2000   Size: 512
+        Real time: 5.830000 sec
+        System time: 4.700000 sec
+        User time: 1.130000 sec
+
+System sort     Records: 2000   Size: 4096
+        Real time: 7.440000 sec
+        System time: 7.110000 sec
+        User time: 0.330000 sec
+Library sort    Records: 2000   Size: 4096
+        Real time: 7.680000 sec
+        System time: 6.760000 sec
+        User time: 0.920000 sec
+
+System sort     Records: 2000   Size: 8192
+        Real time: 13.740000 sec
+        System time: 13.400000 sec
+        User time: 0.340000 sec
+Library sort    Records: 2000   Size: 8192
+        Real time: 14.200000 sec
+        System time: 13.290000 sec
+        User time: 0.910000 sec
+
+System sort     Records: 8000   Size: 4
+        Real time: 58.230000 sec
+        System time: 52.970000 sec
+        User time: 5.260000 sec
+Library sort    Records: 8000   Size: 4
+        Real time: 89.120000 sec
+        System time: 73.890000 sec
+        User time: 15.230000 sec
+
+System sort     Records: 8000   Size: 512
+        Real time: 71.600000 sec
+        System time: 66.090000 sec
+        User time: 5.510000 sec
+Library sort    Records: 8000   Size: 512
+        Real time: 105.230000 sec
+        System time: 87.460000 sec
+        User time: 17.770000 sec
+
+System sort     Records: 8000   Size: 4096
+        Real time: 115.540000 sec
+        System time: 109.890000 sec
+        User time: 5.650000 sec
+Library sort    Records: 8000   Size: 4096
+        Real time: 125.260000 sec
+        System time: 110.780000 sec
+        User time: 14.480000 sec
+
+System sort     Records: 8000   Size: 8192
+        Real time: 224.190000 sec
+        System time: 218.360000 sec
+        User time: 5.830000 sec
+Library sort    Records: 8000   Size: 8192
+        Real time: 224.560000 sec
+        System time: 210.510000 sec
+        User time: 14.050000 sec
+		
+		
+		
+Wnioski:
+Sortowany był zawsze plik o takiej samej liczbie rekordów, ale o innej długości rekordu.
+Sortowanie funkcjami bibliotecznymi jest nieco wolniejsze od sortowania funkcjami bibliotecznymi.
+Dla każdej wielkości bufora.

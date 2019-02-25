@@ -1,0 +1,13 @@
+W przypadku tablicy alokowanej statycznie czasy realizacji poszczeg³olnych zadañ s¹ bardzo podobne.
+Biblioteka dzielona jest niewiele szybsza od statycznej.
+
+W przypadku tablic dynamicznych stworzenie takiej tablicy (w tym przypadku o rozmiarze 10000)
+odbywa siê niemal natychmiast, przez co zmierzony czas jest równy 0.
+
+Czasy poszczególnych operacji s¹ znacznie szybsze ni¿ w przypadku tablic alokowanych statycznie.
+pomiêdzy sob¹ (bibliotek¹ statyczn¹, dzielon¹ i deynamiczn¹) ró¿ni¹ siê o bardzo niewiele.
+
+Poziomy optymalizacji testowa³em na tablicy alokowanej dynamicznie, bibliotece statycznej.
+Pierwszy poziom optymalizacji O1 ró¿ni³ siê niewiele od optymalizacji domyœlnej O0, jednak na korzyœæ tej drugiej.
+O2 mia³ praktycznie identyczne czasy jak O1.
+Wraz z ka¿dym nastêpnym poziomem (O3 i Os) czasy wszystkich operacji spada³y doœæ znacz¹co.

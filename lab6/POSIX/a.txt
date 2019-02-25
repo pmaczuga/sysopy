@@ -1,0 +1,7 @@
+TIME
+MIRROR mirror
+ADD 1 2
+SUB 1 2
+DIV 4 2
+MUL 3 5
+END

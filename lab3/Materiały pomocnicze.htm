@@ -1,0 +1,836 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1250">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;}
+@font-face
+	{font-family:inherit;
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:18.0pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+h3
+	{mso-style-link:"Heading 3 Char";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:13.5pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+code
+	{font-family:"Courier New";}
+pre
+	{mso-style-link:"HTML Preformatted Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-link:"Heading 3";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-link:"HTML Preformatted";
+	font-family:"Courier New";}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:18.0pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Procesy
+- materiały pomocnicze</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><b><span
+lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Proces</span></b><span
+lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;jest
+pojedynczą instancją wykonującego się programu. </span><span style='font-size:
+11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Możemy w nim wyróżnić:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>segment kodu</span></b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;- zawiera
+     kod binarny aktualnie wykonywanego programu. Znajduje się w nim kod
+     zaimplementowanych przez nas funkcji oraz funkcji dołączanych z bibliotek.
+     Zapisane w tym segmencie adresy funkcji pozwalają na ich lokalizację.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>segment danych</span></b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;- zawiera
+     zainicjalizowane zmienne globalne zdefiniowane w programie. Adres segmentu
+     danych można ustalić na podstawie adresu zmiennej globalnej.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>segment BSS
+     -&nbsp;<i>Block Started by Symbol</i></span></b><span style='font-size:
+     11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;- zawiera
+     niezainicjalizowane zmienne globalne</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>segment stosu</span></b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;- zmienne
+     lokalne oraz adresy powrotu wykorzystywane podczas powrotu z wykonywanej
+     funkcji. Ponieważ proces moze pracować w trybie użytkownika lub trybie
+     jądra, każdy z tych trybów ma do dyspozycji oddzielny stos.</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Każdemu
+procesowi przydzielane są zasoby czas procesora, pamięć, dostęp do urządeń
+we/wy oraz plików etc). Część tych zasobów jest do wyłącznej dyspozycji
+procesu, zaś część jest współdzielona z innymi procesami.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Na
+proces nakładane są pewne ograniczenia dotyczące zasobów systemowych,&nbsp;<br>
+możemy do nich uzyskać dostęp następującymi funkcjami z&nbsp;</span><b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>sys/resource.h:</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><b><span
+style='font-size:11.5pt;font-family:"Trebuchet MS",sans-serif;color:red'>int
+getrlimit (int resource, struct rlimit *rlptr) Resource to jedno z makr
+określające rodzaj zasobu</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><b><span
+style='font-size:11.5pt;font-family:"Trebuchet MS",sans-serif;color:red'>int
+setrlimit (int resource, const struct rlimit *rlptr)</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>struct
+rlimit {</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+rlim_t rlim_cur; //bieżące ograniczenie</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+rlim_t rlim_max; //maksymalne ograniczenie</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>}</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;<b>Identyfikatory
+procesów</b></span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Każdy
+proces w systemie UNIX ma przypisany unikalny identyfikator -&nbsp;<b>PID</b>.
+Jest to 16-bitowa, nieujemna liczba całkowita przypisywana do każdego procesu
+podczas jego tworzenia. Niektóre identyfikatory są odgórnie zarezerwowane dla
+specjalnych procesów w systemie, (swapper – 0,&nbsp;<i>init -1 etc)</i>.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>System
+UNIX pamięta także identyfikator procesu macierzystego - ta informacja jest
+zapisywana jako&nbsp;<b>PPID</b>&nbsp;(Parent PID).</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;Do
+każdego procesu przypisane są również (rzeczywiste) identyfikatory użytkownika
+(<b>UID</b>) oraz grupy (<b>GID</b>), określające kto dany proces utworzył.
+Istnieją również efektywne UID i GID przechowujące informacje o identyfikatorze
+właściciela oraz grupy właściciela programu.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Do
+pobrania informacji o identyfikatorach procesu możemy posłużyć się funkcjami z
+biblioteki unistd.h, takimi jak:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>pid_t
+     getpid(void) - zwraca PID procesu wywołującego funkcję</span></b></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>pid_t
+     getppid(void) - zwraca PID procesu macierzystego</span></b></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>uid_t
+     getuid(void) - zwraca rzeczywisty identyfikator użytkownika UID</span></b></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>uid_t
+     geteuid(void) - zwraca efektywny identyfikator użytkownika UID</span></b></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>gid_t
+     getgid(void) - zwraca rzeczywisty identyfikator grupy GID</span></b></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>gid_t
+     getegid(void) - zwraca efektywny identyfikator grupy GID</span></b></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Definicje
+niezbędnych typów znajdziemy w&nbsp;</span><b><span style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:red'>sys/types.h.</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:18.0pt;font-family:"inherit",serif;color:#373A3C'>Tworzenie
+procesów</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W
+systemie Unix każdy proces, za wyjątkiem procesu o numerze 0 jest tworzony
+przez wykonanie przez inny proces funkcji&nbsp;<i>fork</i>. Proces ją
+wykonujący nazywa się&nbsp;<b>procesem macierzystym</b>, zaś nowoutworzony
+-&nbsp;<b>procesem potomnym</b>. Procesy, podobnie jak katalogi, tworzą
+drzewiastą strukturę hierarchiczną - każdy proces w systemie ma jeden proces
+macierzysty, lecz może mieć wiele procesów potomnych. Korzeniem takiego drzewa
+w systemie UNIX jest proces o PID równym 1, czyli&nbsp;<i>init</i>.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Mechanizm
+tworzenia procesu w systemach unixowych przedstawiono poniżej:</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:18.0pt;font-family:"inherit",serif;color:#373A3C'>Funkcje
+systemowe</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Funkcje&nbsp;<i>fork</i>&nbsp;oraz&nbsp;<i>vfork</i></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:
+10.0pt;font-family:Consolas;color:red'>&nbsp;&nbsp;&nbsp; <b>pid_t fork( void )</b></span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W
+momencie jej wywołania tworzony jest nowy proces, będący potomnym dla tego, w
+którym właśnie została wywołana funkcja&nbsp;<i>fork</i>. Jest on kopią procesu
+macierzystego - otrzymuje duplikat obszaru danych, sterty i stosu (a więc nie
+współdzieli danych). Funkcja&nbsp;<i>fork</i>&nbsp;jest wywoływana raz, lecz
+zwraca wartość dwukrotnie - proces potomny otrzymuje wartość 0, a proces
+macierzysty PID nowego procesu. Jest to konieczne nie tylko ze względu na
+możliwość rozróżnienia procesów w kodzie programu: proces macierzysty musi
+otrzymać PID nowego potomka, ponieważ nie istnieje żadna funkcja umożliwiająca
+wylistowanie wszystkich procesów potomnych. W przypadku procesu potomnego nie
+jest konieczne podawanie PID jego procesu macierzystego, ponieważ ten jest
+określony jednoznacznie (i można go wydobyć np. za pomocą funkcji getppid). Z
+kolei 0 jest bezpieczną wartością, ponieważ jest zarezerwowana dla procesu
+demona wymiany i nie ma możliwości utworzenia nowego procesu o takim PID.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Po
+wywołaniu forka oba procesy (macierzysty i potomny) kontynuują swoje działanie
+(od linii następnej po wywołaniu forka czyli efektem kodu:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>&nbsp; <b>#include &lt;stdio.h&gt;</b></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>&nbsp;&nbsp; main(){</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+printf(&quot;Poczatek\n&quot;);</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fork();</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+printf(&quot;Koniec\n&quot;);</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>}</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Będzie:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><i><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>Poczatek&nbsp; //z macierzystego przed wywołaniem forka </span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><i><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>Koniec&nbsp; // z macierzystego lub potomnego po forku</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><i><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>Koniec&nbsp; //z macierzystego lub potmnego po forku</span></i></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Powyższy
+komentarz&nbsp;<i>// z macierzystego lub potomnego po forku wynika z
+faktu&nbsp;</i>że nie można przewidzieć, który z procesów będzie wykonywać
+swoje instrukcje jako pierwszy, dlatego w przypadku gdy wymaga się od nich
+współpracy, należy zastosować jakieś metody synchronizacji komunikacji
+międzyprocesowej.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>vfork</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;</span><b><span
+     style='font-size:7.5pt;font-family:"inherit",serif;color:red'>pid_t vfork(
+     void )&nbsp;</span></b></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Funkcji tej
+używa się w przypadku gdy głównym zadaniem nowego procesu jest wywołanie
+funkcji&nbsp;</span><i><span style='font-size:7.5pt;font-family:"inherit",serif;
+color:#373A3C'>exec</span></i><span style='font-size:7.5pt;font-family:"inherit",serif;
+color:#373A3C'>.&nbsp;<i>vfork</i>&nbsp;„odblokuje” proces macierzysty dopiero
+w momencie wywołania funkcji&nbsp;<i>exec</i>&nbsp;lub&nbsp;<i>exit</i>. Inną
+ważną cechą tej funkcji jest współdzielenie przestrzeni adresowej przez obydwa
+procesy.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Identyfikacja
+procesu macierzystego i potomnego</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>#include &lt;stdio.h&gt;</span><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;#include
+&lt;sys/types.h&gt;</span><span style='font-size:13.5pt;font-family:"inherit",serif;
+color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;#include
+&lt;unistd.h&gt;</span><span style='font-size:13.5pt;font-family:"inherit",serif;
+color:#373A3C'><br>
+<br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;int
+main() {</span><span style='font-size:13.5pt;font-family:"inherit",serif;
+color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pid_t
+child_pid;</span><span style='font-size:13.5pt;font-family:"inherit",serif;
+color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;PID
+glownego programu: %d\n&quot;, (int)getpid());</span><span style='font-size:
+13.5pt;font-family:"inherit",serif;color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;child_pid
+= fork();</span><span style='font-size:13.5pt;font-family:"inherit",serif;
+color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(child_pid!=0)
+{</span><span style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Proces
+rodzica: Proces rodzica ma pid:%d\n&quot;, (int)getpid());</span><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Proces
+rodzica: Proces dziecka ma pid:%d\n&quot;, (int)child_pid);</span><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+else {</span><span style='font-size:13.5pt;font-family:"inherit",serif;
+color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Proces
+dziecka: Proces rodzica ma pid:%d\n&quot;,(int)getppid());</span><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Proces
+dziecka: Proces dziecka ma pid:%d\n&quot;,(int)getpid());</span><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'><br>
+<br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return
+0;</span><span style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;}</span><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'><br>
+<br>
+Przykładowy wynik dział</span><span style='font-size:13.5pt;font-family:"Times New Roman",serif;
+color:#373A3C'>&#130;</span><span style='font-size:13.5pt;font-family:"inherit",serif;
+color:#373A3C'>ania programu:<br>
+<br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;PID
+glownego programu: 2359</span><span style='font-size:13.5pt;font-family:"inherit",serif;
+color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;Proces
+rodzica: Proces rodzica ma pid:2359</span><span style='font-size:13.5pt;
+font-family:"inherit",serif;color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;Proces
+rodzica: Proces dziecka ma pid:2360</span><span style='font-size:13.5pt;
+font-family:"inherit",serif;color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;Proces
+dziecka: Proces rodzica ma pid:2359</span><span style='font-size:13.5pt;
+font-family:"inherit",serif;color:#373A3C'><br>
+</span><span style='font-size:17.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;Proces
+dziecka: Proces dziecka ma pid:2360</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>&nbsp;</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Funkcje
+rodziny&nbsp;<i>exec</i></span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcje
+z rodziny&nbsp;<i>exec służą do uruchomienia w ramach procesu innego programu</i>.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W
+wyniku wywołania funkcji typu&nbsp;<b>exec&nbsp;</b>następuje reinicjalizacja
+segmentów kodu, danych i stosu procesu ale nie zmieniają się takie atrybuty
+procesu jak pid, ppid, tablica otwartych plików i kilka innych atrybutów z
+segmentu danych systemowych</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>int execl(char
+     const *path, char const *arg0, ...)</span></b><b><span style='font-size:
+     11.5pt;font-family:"Segoe UI",sans-serif;color:red'>&nbsp;</span></b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'><br>
+     funkcja jako pierwszy argument przyjmuje ścieżkę do pliku, następne są
+     argumenty wywołania funkcji, gdzie arg0 jest nazwą programu</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>int
+     execle(char const *path, char const *arg0, ..., char const * const *envp)</span></b><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>&nbsp;</span></b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'><br>
+     podobnie jak execl, ale pozwala na podanie w ostatnim argumencie tablicy
+     ze zmiennymi środowiskowymi</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>int
+     execlp(char const *file, char const *arg0, ...)</span></b><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>&nbsp;</span></b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'><br>
+     również przyjmuje listę argumentów ale, nie podajemy tutaj ścieżki do
+     pliku, lecz samą jego nazwę, zmienna środowiskowa PATH zostanie
+     przeszukana w celu zlokalizowania pliku</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>int execv(char
+     const *path, char const * const * argv)</span></b><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>&nbsp;</span></b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'><br>
+     analogicznie do execl, ale argumenty podawane są w tablicy</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>int
+     execve(char const *path, char const * const *argv, char const * const
+     *envp)</span></b><b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+     color:red'>&nbsp;</span></b><span style='font-size:11.5pt;font-family:
+     "Segoe UI",sans-serif'><br>
+     analogicznie do execle, również argumenty przekazujemy tutaj w tablicy
+     tablic znakowych</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>int
+     execvp(char const *file, char const * const *argv)</span></b><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>&nbsp;</span></b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'><br>
+     analogicznie do execlp, argumenty w tablicy</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Różnice
+pomiędzy wywołaniami funkcji&nbsp;<b>exec&nbsp;</b>wynikają głównie z różnego
+sposobu budowy ich listy argumentów: w przypadku funkcji&nbsp;<b>execl&nbsp;</b>i&nbsp;<b>execlp&nbsp;</b>są
+one podane w postaci listy, a w przypadku funkcji&nbsp;<b>execv&nbsp;</b>i&nbsp;<b>execvp&nbsp;</b>jako
+tablica.&nbsp;</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Zarówno
+lista argumentów, jak i tablica wskaźników musi być zakończona wartością NULL.
+Funkcja&nbsp;<b>execle&nbsp;</b>dodatkowo ustala środowisko wykonywanego
+procesu.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcje&nbsp;<b>execlp&nbsp;</b>oraz&nbsp;<b>execvp&nbsp;</b>szukają
+pliku wykonywalnego na podstawie ścieżki przeszukiwania podanej w zmiennej
+środowiskowej PATH. Jeśli zmienna ta nie istnieje, przyjmowana jest domyślna
+ścieżka&nbsp;:/bin:/usr/bin.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wartością
+zwrotną funkcji typu&nbsp;<b>exec&nbsp;</b>jest&nbsp;<i>status</i>, przy czym
+jest ona zwracana tylko wtedy, gdy funkcja</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>zakończy
+się niepoprawnie, będzie to zatem wartość -1.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>PRZYKŁADY</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>execl(„/bin/ls&quot;, „ls&quot;, „-l&quot;,null)</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>execlp(„ls&quot;, „ls&quot;, „-l&quot;,null)</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>char* const av[]={„ls&quot;, „-l&quot;, null}</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>execv(„/bin/ls&quot;, av)</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>char* const av[]={„ls&quot;, „-l&quot;, null}</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>execvp(„ls&quot;, av)</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcje&nbsp;<i>exec</i>&nbsp;<b>nie
+tworzą nowego procesu</b>, tak jak w przypadku funkcji&nbsp;<i>fork</i>. Należy
+pamiętać, że jeśli w programie wywołamy funkcję&nbsp;<i>exec</i>, to kod
+znajdujący się dalej w programie nie zostanie wykonany, chyba że wystąpi błąd.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Przykład
+połączenia funkcji fork i exec</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><b><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>main.c:</span></b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><br>
+<br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;#include
+&lt;stdio.h&gt;</span></b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'><br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;#include
+&lt;sys/types.h&gt;</span></b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'><br>
+<br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;int
+main() {</span></b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'><br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pid_t
+child_pid;</span></b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'><br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;child_pid
+= fork();</span></b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'><br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(child_pid!=0)
+{</span></b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'><br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Ten
+napis zostal wyswietlony w programie 'main'!\n&quot;);</span></b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+else {</span></b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'><br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;execvp(&quot;./child&quot;,
+NULL);</span></b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'><br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><br>
+<br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return
+0;</span></b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'><br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;}</span></b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><br>
+<br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>child.c:</span></b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><br>
+<br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;#include
+&lt;stdio.h&gt;</span></b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'><br>
+<br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;int
+main() {</span></b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'><br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Ten
+napis zostal wyswietlony przez program 'child'!\n&quot;);</span></b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return
+0;</span></b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'><br>
+</span><b><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;}</span></b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><br>
+<br>
+Wynikiem działania programu jest:<br>
+<br>
+</span><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;Ten
+napis zostal wyswietlony w programie 'main'!</span><span style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:#373A3C'><br>
+</span><span style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>&nbsp;&nbsp;&nbsp;</span><span
+lang=PL style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>Ten napis
+zostal wyswietlony przez program 'child'!</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Funkcje&nbsp;<i>wait</i>&nbsp;oraz&nbsp;<i>waitpid</i></span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Proces
+macierzysty może się dowiedzieć o sposobie zakończenia bezpośredniego potomka
+przez wywołanie funkcji systemowej&nbsp;<i>wait</i>. Jeśli wywołanie
+funkcji&nbsp;<i>wait</i>&nbsp;nastąpi przed zakończeniem potomka, przodek
+zostaje zawieszony w oczekiwaniu na to zakończenie. Jeżeli proces macierzysty
+zakończy działanie przed procesem potomnym, to proces potomny nazywany jest
+sierotą (ang. orphant) i jest „adoptowany&quot; przez proces systemowy&nbsp;<i>init</i>,
+który staję się w ten sposób jego przodkiem. Jeżeli proces potomny zakończył
+działanie przed wywołaniem funkcji&nbsp;<i>wait</i>&nbsp;w procesie
+macierzystym, potomek pozostanie w stanie&nbsp;<i>zombi</i>. Zombi jest
+procesem, który zwalnia wszystkie zasoby (nie zajmuje pamięci, nie jest mu
+przydzielany procesor), zajmuje jedynie miejsce w tablicy procesów w jądrze
+systemu operacyjnego i zwalnia je dopiero w momencie wywołania funkcji&nbsp;<i>wait</i>&nbsp;przez
+proces macierzysty, lub w momencie zakończenia procesu macierzystego.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Aby
+pobrać stan zakończenia procesu potomnego należy użyć jednej z dwóch funkcji
+(plik nagłówkowy&nbsp;</span><span lang=PL style='font-size:10.0pt;font-family:
+Consolas;color:#E83E8C'>sys/wait.h</span><span lang=PL style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:#373A3C'>):</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><b><span
+style='font-size:10.0pt;font-family:Consolas;color:red'> pid_t wait ( int
+*statloc )</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:Consolas;
+color:#212529'>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><b><span
+style='font-size:10.0pt;font-family:Consolas;color:red'> pid_t waitpid( pid_t
+pid, int *statloc, int options )</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wywołując&nbsp;<i>wait</i>&nbsp;lub&nbsp;<i>waitpid</i>&nbsp;proces
+może:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>ulec
+     zablokowaniu (jeśli wszystkie procesy potomne ciągle pracują)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>natychmiast
+     powrócić ze stanem zakończenia potomka (jeśli potomek zakończył pracę i
+     oczekuje na pobranie jego stanu zakończenia)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>natychmiast
+     powrócić z komunikatem awaryjnym (jeśli nie ma żadnych procesów potomnych)</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja&nbsp;<i>wait</i>&nbsp;oczekuje
+na zakończenie dowolnego potomka (do tego czasu blokuje proces macierzysty).
+Funkcja&nbsp;<i>waitpid</i>&nbsp;jest bardziej elastyczna, posiada możliwość
+określenia konkretnego PID procesu, na który ma oczekiwać, a także dodatkowe
+opcje (np. nieblokowanie procesu w sytuacji gdy żaden proces potomny się nie
+zakończył). </span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>Argument pid należy interpretować w następujący sposób:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>pid ==
+     -1 Oczekiwanie na dowolny proces potomny. W tej sytuacji funkcja waitpid
+     jest równoważna funkcji wait.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>pid
+     &gt; 0 Oczekiwanie na proces o identyfikatorze równym pid.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>pid ==
+     0 Oczekiwanie na każdego potomka, którego identyfikator grupy procesów
+     jest równy identyfikatorowi grupy procesów w procesie wywołującym tę
+     funkcję.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>pid
+     &lt; -1 Oczekiwanie na każdego potomka, którego identyfikator grupy
+     procesów jest równy wartości absolutnej argumentu pid.</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W
+obydwu przypadkach statloc to wskaźnik do miejsca w pamięci, gdzie zostanie
+przekazany status zakończenia procesu potomnego (można go zignorować,
+przekazując wartość NULL).</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:18.0pt;font-family:"inherit",serif;color:#373A3C'>Kończenie
+procesów</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Istnieje
+kilka możliwych sposobów na zakończenie procesu:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>zakończenie
+     normalne</span></li>
+ <ul type=circle>
+  <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+      style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>wywołanie
+      instrukcji</span><b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+      color:red'>&nbsp;<i>return</i>&nbsp;</span></b><span style='font-size:
+      11.5pt;font-family:"Segoe UI",sans-serif'>w funkcji&nbsp;</span><span
+      style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>main</span></li>
+  <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+      style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>wywołanie
+      funkcji&nbsp;</span><b><i><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+      color:red'>exit</span></i></b><span style='font-size:11.5pt;font-family:
+      "Segoe UI",sans-serif'>&nbsp;- biblioteka&nbsp;</span><span
+      style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>stdlib</span></li>
+  <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+      style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>wywołanie
+      funkcji&nbsp;</span><b><i><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+      color:red'>_exit</span></i></b><span style='font-size:11.5pt;font-family:
+      "Segoe UI",sans-serif'>&nbsp;- biblioteka&nbsp;</span><span
+      style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>unistd</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>zakończenie
+     awaryjne</span></li>
+ <ul type=circle>
+  <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+      style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>wywołanie
+      funkcji&nbsp;</span><b><i><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+      color:red'>abort</span></i></b><span style='font-size:11.5pt;font-family:
+      "Segoe UI",sans-serif'>&nbsp;- generuje sygnał SIGABORT</span></li>
+  <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+      style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:red'>odebranie
+      sygnału</span></b></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Funkcje&nbsp;<i>exit</i>&nbsp;i&nbsp;<i>_exit</i></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>&nbsp;&nbsp;&nbsp; void exit( int status )</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:10.0pt;font-family:Consolas;
+color:red'>&nbsp;&nbsp;&nbsp; void _exit( int status )</span></b></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja&nbsp;<i>_exit</i>&nbsp;natychmiast
+kończy działanie programu i powoduje powrót do jądra systemu. Funkcja&nbsp;<i>exit</i>&nbsp;natomiast,
+dokonuje pewnych operacji porządkowych - kończy działanie procesu, który ją
+wykonał i powoduje przekazanie w odpowiednie miejsce tablicy procesów
+wartości&nbsp;<i>status</i>, która może zostać odebrana i zinterpretowana przez
+proces macierzysty. Jeśli proces macierzysty został zakończony, a istnieją
+procesy potomne - to wykonanie ich nie jest zakłócone, ale ich identyfikator
+procesu macierzystego wszystkich procesów potomnych otrzyma wartość 1 będącą
+identyfikatorem procesu&nbsp;<i>init</i>&nbsp;(proces potomny staje się sierotą
+(ang. orphant) i jest „adoptowany&quot; przez proces systemowy&nbsp;<i>init</i>).
+Funkcja&nbsp;<i>exit</i>&nbsp;zdefiniowana jest w pliku&nbsp;</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#E83E8C'>stdlib.h</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Polecenie
+kill</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Polecenie
+kill przesyła sygnał do wskazanego procesu w systemie. Standardowo wywołanie
+programu powoduje wysyłanie sygnału nakazującego procesowi zakończenie pracy.
+Proces zapisuje wtedy swoje wewnętrzne dane i kończy pracę. Kill może przesyłać
+procesom różnego rodzaju sygnały. Są to na przykład:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>SIGTERM –
+     programowe zamknięcie procesu (15, domyślny sygnał)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>SIGKILL –
+     unicestwienie procesu, powoduje utratę wszystkich zawartych w nm danych
+     (9)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>SIGSTOP –
+     zatrzymanie procesu bez utraty danych</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>SIGCONT –
+     wznowienie zatrzymanego procesu</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Czasami
+może zdarzyć się sytuacja, iż proces nie chce się zamknąć sygnałem SIGTERM, bo
+jest przez coś blokowany. Wtedy definitywnie możemy go unicestwić sygnałem
+SIGKILL, lecz spowoduje to utratę danych wewnętrznych procesu.</span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

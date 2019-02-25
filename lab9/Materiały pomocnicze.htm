@@ -1,0 +1,780 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1250">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+@font-face
+	{font-family:MathJax_Size1;
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:inherit;
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:18.0pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+h3
+	{mso-style-link:"Heading 3 Char";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:13.5pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+h4
+	{mso-style-link:"Heading 4 Char";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#954F72;
+	text-decoration:underline;}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+pre
+	{mso-style-link:"HTML Preformatted Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+tt
+	{font-family:"Courier New";}
+span.MsoPlaceholderText
+	{color:gray;}
+span.mo
+	{mso-style-name:mo;}
+span.mi
+	{mso-style-name:mi;}
+span.mn
+	{mso-style-name:mn;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-link:"Heading 3";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.Heading4Char
+	{mso-style-name:"Heading 4 Char";
+	mso-style-link:"Heading 4";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.code
+	{mso-style-name:code;}
+p.note, li.note, div.note
+	{mso-style-name:note;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+p.codetitle, li.codetitle, div.codetitle
+	{mso-style-name:codetitle;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-link:"HTML Preformatted";
+	font-family:"Courier New";}
+span.comment
+	{mso-style-name:comment;}
+span.input
+	{mso-style-name:input;}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink="#954F72">
+
+<div class=WordSection1>
+
+<h2 style='margin-top:0cm;background:white'><span lang=PL style='font-size:
+13.0pt;font-family:"MathJax_Size1",serif;color:#373A3C;background:white'><br>
+</span><span lang=PL style='font-family:"Segoe UI",sans-serif;color:#373A3C;
+font-weight:normal'>Metody synchronizacji wątków - materiały pomocnicze</span></h2>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:18.0pt;font-family:"inherit",serif;color:#373A3C'>Mutex-y</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><b><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><a
+href="https://pl.wikipedia.org/wiki/Mutex" title="w:Mutex"><span lang=PL
+style='color:#009C58'>Mutex</span></a></span></b><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;(<b><i>MUT</i></b><i>ual&nbsp;<b>EX</b>clusion</i>,
+wzajemne wykluczanie) jest blokadą, którą może uzyskać&nbsp;<b>tylko jeden
+wątek</b>. Mutexy służą głównie do realizacji sekcji krytycznych, czyli
+bezpiecznego w sensie wielowątkowym dostępu do zasobów współdzielonych.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Schemat
+działania na mutexach jest następujący:</span></p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>pozyskanie
+     blokady</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>modyfikacja lub
+     odczyt współdzielonego obiektu</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>zwolnienie
+     blokady</span></li>
+</ol>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Mutex
+w&nbsp;<b>pthreads</b>&nbsp;jest opisywany przez strukturę typu&nbsp;</span><span
+lang=PL style='font-size:10.0pt;font-family:"Courier New";color:#373A3C'>pthread_mutex_t</span><span
+lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>,
+zaś jego atrybuty&nbsp;</span><span lang=PL style='font-size:10.0pt;font-family:
+"Courier New";color:#373A3C'>pthread_mutexattr_t</span><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Obiekt&nbsp;pthread_mutex_t&nbsp;(wzajemnego
+wykluczania) musi być przed użyciem zainicjalizowany, co odbywa się za pomocą
+funkcji&nbsp;</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'><a
+href="http://www.linuxmanpages.com/man3/pthread_mutex_init.3thr.php"><span
+lang=PL style='color:#009C58'>pthread_mutex_init</span></a></span><span
+lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>int</span></b><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;pthread_mutex_init (<b>pthread_mutex_t</b>&nbsp;*mutex,&nbsp;<b>pthread_mutexattr_t</b>&nbsp;*attr);</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>mutex -
+     wcześniej stworzony przez nas mutex</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>attr -
+     atrybuty tworzonego mutexu (domyślne ustawienia: NULL)</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Zablokowanie
+obiektu przez wątek może zostać wykonane poprzez jedną z następujących funkcji:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>int</span></b><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;pthread_mutex_lock(<b>pthread_mutex_t</b>&nbsp;*mutex)
+     - która jeśli obiektu mutex-a jest zablokowany przez inny wątek usypia
+     obecny wątek, aż mutex zostanie odblokowany. Z kolei jeśli obiekt mutex-a
+     jest już zablokowany przez przez obecny wątek to albo:</span></li>
+ <ul type=circle>
+  <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+      lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>usypia
+      wywołujący ją wątek (jeśli jest to mutex typu &quot;fast&quot;)</span></li>
+  <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+      lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>zwraca
+      natychmiast kod błędu&nbsp;EDEADLK&nbsp;(jeśli jest to mutex typu
+      &quot;error checking&quot;)</span></li>
+  <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+      lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>normalnie
+      kontynuuje prace, zwiększając licznik blokad mutex-a przez dany wątek
+      (jeśli mutex jest typu &quot;recursive&quot;); odpowiednia liczba razy
+      odblokowań musi nastąpić aby mutex powrócił do stanu &quot;unlocked&quot;</span></li>
+ </ul>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>int</span></b><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;pthread_mutex_trylock(<b>pthread_mutex_t</b>&nbsp;*mutex)&nbsp;-
+     która zachowuje się podobnie jak powyższa, z tym że obecny wątek nie jest
+     blokowany jeśli mutex jest już zablokowany przez inny wątek,a jedynie ustawia
+     flagę EBUSY.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'><a
+     href="http://www.opengroup.org/onlinepubs/009695399/functions/pthread_mutex_timedlock.html"><span
+     lang=PL style='color:#009C58'>pthread_mutex_timedlock&nbsp;</span></a></span><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>- jest
+     rozwinięciem funkcji&nbsp;pthread_mutex_lock&nbsp;- podawany jest
+     maksymalny czas czekania wątku na odblokowanie (zablokowanego przez inny
+     wątek) mutex-a.</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Odblokowanie
+mutex-a wykonywane jest za pomocą funkcji&nbsp;</span><span style='font-size:
+11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><a
+href="http://www.linuxmanpages.com/man3/pthread_mutex_unlock.3thr.php"><span
+lang=PL style='color:#009C58'>pthread_mutex_unlock</span></a></span><span
+lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>.</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=869
+ style='width:651.75pt;border-collapse:collapse'>
+ <tr>
+  <td style='background:#FFBBBB;padding:0cm 0cm 0cm 0cm'>
+  <p class=MsoNormal style='line-height:normal'><b><span lang=PL
+  style='font-size:12.0pt;font-family:"Times New Roman",serif'>Ostrzeżenie:&nbsp;</span></b><span
+  lang=PL style='font-size:12.0pt;font-family:"Times New Roman",serif'>Należy
+  zwrócić uwagę, aby nie używać mutex-ów w funkcjach obsługujących sygnały
+  (signal handlers), gdyż może to doprowadzić do zablokowania się programu.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Jednym
+z najprostszych zastosowań mutex-ów jest ochrona zmiennej przed równoczesnym
+dostępem z wielu wątków. </span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>Pokazuje to następujący przykład:</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=869
+ style='width:651.75pt;border-collapse:collapse'>
+ <tr>
+  <td style='background:#7A5ADA;padding:0cm 0cm 0cm 0cm'>
+  <p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt;
+  font-family:"Times New Roman",serif'>Chronienie dostępu do zmiennej</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='background:#DDDDFF;padding:0cm 0cm 0cm 0cm'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>int
+  x;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>pthread_mutex_t
+  x_mutex = PTHREAD_MUTEX_INITIALIZER;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>void
+  my_thread_safe_function(...) </span><span lang=PL style='font-size:10.0pt;
+  font-family:Consolas;color:#212529'>{</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>  /* Każdy dostęp do zmiennej x powinien się odbywać w
+  następujący sposób: */</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>  </span><span style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>pthread_mutex_lock(&amp;x_mutex);</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>  /*
+  operacje na x... */</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'> 
+  pthread_mutex_unlock(&amp;x_mutex);</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>}</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>...</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Zakleszczenia</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Zakleszczenia
+są najczęściej spowodowane nieprawidłowym używaniem mechanizmu mutexów przez
+programistę. Może to wystąpić np. w sytuacji gdy próbujemy zamknąć mutex w
+wątku, w którym już wcześniej to zrobiliśmy. Zachowanie programu jest wtedy
+uzależnione od typu używanego mutexu.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;line-height:normal;background:white'><span
+lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wyróżniamy
+trzy rodzaje mutexów:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Szybki
+     mutex</span></b><span lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;(fast
+     mutex) – domyślny typ, próba zamknięcia takiego mutexu z wątku, w którym
+     wcześniej już to zrobiliśmy spowoduje zakleszczenie.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Rekursywny
+     mutex</span></b><span lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;–
+     nie powoduje zakleszczenia. Zapamiętuje ile razy wątek zablokował danego
+     mutexa i oczekuje na taką samą ilość odblokowań.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Mutex
+     sprawdzający błędy</span></b><span lang=PL style='font-size:11.5pt;
+     font-family:"Segoe UI",sans-serif'>&nbsp;(error-checking mutex) – taka
+     próba spowoduje błąd&nbsp;<b>EDEADLK</b>&nbsp;podczas wywoływania
+     pthread_mutex_lock</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>By
+stworzyć niestandardowe mutexy używamy następujących typów i funkcji:&nbsp;<b>int</b>&nbsp;pthread_mutexattr_init(
+*attr) - inicjalizuje zmienną z atrybutami<br>
+<b>int</b>&nbsp;pthread_mutexattr_destroy(<b>pthread_mutexattr_t</b>&nbsp;*attr)
+- zwalnianie<br>
+<b>int</b>&nbsp;pthread_mutexattr_settype(<b>pthread_mutexattr_t</b>&nbsp;*attr,
+int type) - ustawia typ mutexu<br>
+<b>int</b>&nbsp;pthread_mutexattr_gettype(<b>const pthread_mutexattr_t</b>&nbsp;*attr,
+int *type) - pobiera typ mutexu<br>
+<br>
+</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>pthread_mutexattr_t
+     attr</span></b><span lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;-
+     zmienna przechowująca atrybuty mutexa</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>type</span></b><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;-
+     typ mutexu - może przyjmować następujące wartości:</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>PTHREAD_MUTEX_NORMAL<br>
+PTHREAD_MUTEX_ERRORCHECK<br>
+PTHREAD_MUTEX_RECURSIVE</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Współdzielenie
+mutexu z innymi procesami</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:12.0pt;font-family:"inherit",serif;color:#373A3C'>Funkcje</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:"Courier New"'>int
+     pthread_mutexattr_setpshared(pthread_mutexattr_t *attr, int pshared)&nbsp;</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:"Courier New"'>int
+     pthread_mutexattr_getpshared(const pthread_mutexattr_t *attr, int
+     *pshared)&nbsp;</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:13.5pt;font-family:"inherit",serif;color:#373A3C'>Zmiana
+priorytetu wątku posiadającego blokadę</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Dostępne,
+gdy istnieje rozszerzenie&nbsp;</span><span style='font-size:11.5pt;font-family:
+"Segoe UI",sans-serif;color:#373A3C'><a
+href="https://pl.wikibooks.org/wiki/POSIX_Threads/Wst%C4%99p#Opcje_standardu"
+title="POSIX Threads/Wstęp"><span lang=PL style='color:#009C58'>TPP</span></a></span><span
+lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;(oraz&nbsp;</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><a
+href="https://pl.wikibooks.org/wiki/POSIX_Threads/Wst%C4%99p#Opcje_standardu"
+title="POSIX Threads/Wstęp"><span lang=PL style='color:#009C58'>TPI</span></a></span><span
+lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>).</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wartość
+atrybutu decyduje o strategii wykonywania programu, gdy wiele wątków o różnych
+priorytetach stara się o uzyskanie blokady. </span><span style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:#373A3C'>Atrybut może mieć wartości:</span></p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:"Courier New"'>PTHREAD_PRIO_NONE</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:"Courier New"'>PTHREAD_PRIO_PROTECT</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>,</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:"Courier New"'>PTHREAD_PRIO_INHERIT</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;(opcja&nbsp;<a
+     href="https://pl.wikibooks.org/wiki/POSIX_Threads/Wst%C4%99p#Opcje_standardu"
+     title="POSIX Threads/Wstęp"><span style='color:#009C58'>TPI</span></a>).</span></li>
+</ol>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W
+przypadku&nbsp;</span><b><span lang=PL style='font-size:10.0pt;font-family:
+"Courier New";color:#373A3C'>PTHREAD_PRIO_NONE</span></b><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;priorytet
+wątku, który pozyskuje blokadę nie zmienia się.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W
+dwóch pozostałych przypadkach z mutexem powiązany zostaje pewien priorytet i
+gdy wątek uzyska blokadę, wówczas jego priorytet jest podbijany do wartość z
+mutexu (o ile oczywiście był wcześniej niższy). Innymi słowy w obrębie sekcji
+krytycznej wątek może działać z wyższym priorytetem.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Sposób
+ustalania priorytetu mutexu zależy od atrybutu:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:10.0pt;font-family:"Courier New"'>PTHREAD_PRIO_INHERIT</span><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;-
+     wybierany jest maksymalny priorytet spośród wątków oczekujących na
+     uzyskanie danej blokady;</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:10.0pt;font-family:"Courier New"'>PTHREAD_PRIO_PROTECT</span><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;-
+     priorytet jest ustalany przez programistę funkcją&nbsp;</span><span
+     lang=PL style='font-size:10.0pt;font-family:"Courier New"'>pthread_mutexattr_setprioceiling</span><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;lub&nbsp;</span><span
+     lang=PL style='font-size:10.0pt;font-family:"Courier New"'>pthread_mutex_setprioceiling</span><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;(opisane
+     w następnej sekcji).</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Dodatkowo
+jeśli wybrano wartość&nbsp;</span><span lang=PL style='font-size:10.0pt;
+font-family:"Courier New";color:#373A3C'>PTHREAD_PRIO_PROTECT</span><span
+lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>,
+wówczas wszelkie próby założenia blokady funkcjami&nbsp;</span><span lang=PL
+style='font-size:10.0pt;font-family:"Courier New";color:#373A3C'>pthread_mutex_XXXlock</span><span
+lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>z
+poziomu wątków o priorytecie niższym niż ustawiony dla mutexa nie powiodą się -
+zostanie zwrócona wartość błędu&nbsp;</span><span lang=PL style='font-size:
+10.0pt;font-family:"Courier New";color:#373A3C'>EINVAL</span><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:12.0pt;font-family:"inherit",serif;color:#373A3C'>Funkcje</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:"Courier New"'>int
+     pthread_mutexattr_setprotocol(pthread_mutexattr_t *attr, int protocol)
+     &nbsp;(<i><a
+     href="http://www.opengroup.org/onlinepubs/000095399/functions/pthread_mutexattr_setprotocol.html"><span
+     style='color:#009C58'>doc</span></a></i>)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:10.0pt;font-family:"Courier New"'>int
+     pthread_mutexattr_getprotocol(const pthread_mutexattr_t *attr, int
+     *protocol) &nbsp;(<i><a
+     href="http://www.opengroup.org/onlinepubs/000095399/functions/pthread_mutexattr_getprotocol.html"><span
+     style='color:#009C58'>doc</span></a></i>)</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:18.0pt;font-family:"inherit",serif;color:#373A3C'>Semafory
+nienazwane</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Nowy
+     semafor jest tworzony przez funkcję&nbsp;</span><span style='font-size:
+     11.5pt;font-family:"Segoe UI",sans-serif'><a
+     href="http://www.linuxmanpages.com/man3/sem_init.3thr.php"><span lang=PL
+     style='color:#009C58'>sem_init</span></a></span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Operacja&nbsp;Sygnalizuj&nbsp;jest
+     wykonywana za pomocą&nbsp;</span><span style='font-size:11.5pt;font-family:
+     "Segoe UI",sans-serif'><a
+     href="http://www.linuxmanpages.com/man3/sem_post.3thr.php"><span lang=PL
+     style='color:#009C58'>sem_post</span></a></span><span lang=PL
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>, która
+     zwiększa licznik semafora. </span><span style='font-size:11.5pt;
+     font-family:"Segoe UI",sans-serif'>Funkcja ta nigdy nie powoduje blokady
+     wywołującego ją wątku.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Operacja&nbsp;Czekaj&nbsp;jest
+     wykonywana za pomocą jednej z następujących funkcji:</span></li>
+ <ul type=circle>
+  <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+      style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'><a
+      href="http://www.linuxmanpages.com/man3/sem_wait.3thr.php"><span lang=PL
+      style='color:#009C58'>sem_wait</span></a></span><span lang=PL
+      style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;- proces
+      jest usypiany aż dany semafor ma nie-zerową wartość, po czym następuje
+      atomowa operacja zmniejszenia licznika semafora</span></li>
+  <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+      style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'><a
+      href="http://www.linuxmanpages.com/man3/sem_trywait.3thr.php"><span
+      lang=PL style='color:#009C58'>sem_trywait</span></a></span><span lang=PL
+      style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;- jest
+      nie blokującym wariantem&nbsp;sem_wait&nbsp;- jeśli semafor ma zerowy
+      licznik, funkcja nie usypia wątku lecz zwraca -1 u stawia numer błędu
+      na&nbsp;EAGAIN</span></li>
+ </ul>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Semafor
+     jest usuwany za pomocą&nbsp;</span><span style='font-size:11.5pt;
+     font-family:"Segoe UI",sans-serif'><a
+     href="http://www.linuxmanpages.com/man3/sem_destroy.3thr.php"><span
+     lang=PL style='color:#009C58'>sem_destroy</span></a></span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:18.0pt;font-family:"inherit",serif;color:#373A3C'>Warunki
+Sprawdzające (Condition Variables)</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Czasami
+konieczne jest monitorowanie przez wątek pewnych warunków. Implementacja ich
+sprawdzania z wykorzystaniem konwencjonalnych mechanizmów (ciągłego sprawdzania
+czy warunek jest spełniony) byłaby mocno nieefektywna, gdyż powodowałaby że
+wątek byłby ciągle zajęty.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Rozwiązaniem
+tego problemu jest mechanizm warunków sprawdzających (</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><a
+href="http://www.linuxmanpages.com/man3/pthread_cond_init.3thr.php"><span
+lang=PL style='color:#009C58'>Condition Variables</span></a></span><span
+lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>).
+Pozwala on na uśpienie wątku aż do momentu gdy pewne warunki na dzielonych
+danych zostaną spełnione.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Za
+pomocą zmiennych warunkowych możemy wstrzymywać wykonywanie wątku, aż do
+momentu gdy zajdzie określony przez nas warunek. Zmiennej warunkowej towarzyszy
+mutex, który zapewnia wyłączność w trakcie odczytu/zmiany wartości flagi.<br>
+<br>
+Gdy wątek dochodzi do sekcji zależnej od pewnego warunku (np. flagi),
+wykonywana jest sekwencja:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Wątek
+     zajmuje mutexa następnie sprawdza warunek.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Jeżeli
+     warunek jest spełniony – wtedy wątek wykonuje kolejne instrukcje.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Jeśli
+     warunek nie jest spełniony – wtedy wątek jednocześnie odblokowuje mutex i
+     wstrzymuje działanie aż do spełnienia warunku (poinformowania o zmianie
+     warunku przez inny watek).</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Przy
+zmianie warunku muszą być podjęte następujące kroki:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Zajęcie mutexa
+     towarzyszącego zmiennej warunkowej</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Podjęcie
+     akcji, która może zmienić warunek</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     lang=PL style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Zasygnalizowanie
+     oczekującym wątkom zmiany warunku.</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>Odblokowanie
+     mutexa.</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Zmienne
+warunkowe przechowywane są w typie pthread_cond_t.<br>
+Zmienne warunkowe obsługują następujące funkcje:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><b><span lang=PL style='font-size:11.5pt;font-family:
+"Segoe UI",sans-serif;color:#373A3C'>int</span></b><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;pthread_cond_init(<b>pthread_cond_t</b>&nbsp;*cond,
+pthread_condattr_t *attr) - inicjalizacja zmiennej<br>
+<b>int</b>&nbsp;pthread_cond_destroy(<b>pthread_cond_t</b>&nbsp;*cond) -
+usunięcie zmiennej<br>
+<b>int</b>&nbsp;pthread_cond_wait(<b>pthread_cond_t</b>&nbsp;*cond,
+pthread_mutex_t *mutex) - ustawia wątek w tryb oczekiwania w czasie, którego
+Mutex jest odblokowany<br>
+<b>int</b>&nbsp;pthread_cond_timedwait(<b>pthread_cond_t</b>&nbsp;*cond,
+pthread_mutex_t *mutex, const struct timespec *timeout) - usypia wątek na
+określoną ilość czasu<br>
+<b>int&nbsp;</b>pthread_cond_broadcast(<b>pthread_cond_t</b>&nbsp;*cond) -
+powiadamia wszystkie oczekujące wątki<br>
+<b>int</b>&nbsp;pthread_cond_signal(<b>pthread_cond_t</b>&nbsp;*cond) -
+powiadamia tylko jeden wątek</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'><br>
+Zmienna warunkowa może być również inicjalizowana makrem&nbsp;<b>PTHREAD_COND_INITIALIZER</b>,
+które zainicjalizuje ją standardowymi atrybutami.&nbsp;<br>
+<br>
+</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>Do obsługi atrybutów służa funkcje:&nbsp;<b>int</b>&nbsp;pthread_condattr_init(<b>pthread_condattr_t</b>&nbsp;*attr)
+- inicjalizacja<br>
+<b>int</b>&nbsp;pthread_condattr_destroy(<b>pthread_condattr_t</b>&nbsp;*attr)
+- zwolnianie<br>
+<b>int</b>&nbsp;pthread_condattr_getpshared(<b>const pthread_condattr_t</b>&nbsp;*attr,&nbsp;<b>int</b>&nbsp;*pshared)
+- pobiera atrybut process-shared<br>
+<b>int</b>&nbsp;pthread_condattr_setpshared(<b>pthread_condattr_t</b>&nbsp;*attr,&nbsp;<b>int</b>&nbsp;pshared)
+- ustawia atrybut process-shared</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span lang=PL
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Poniżej
+znajduje się &quot;urywek&quot; kodu wykorzystujący warunki sprawdzające. Dwie
+zmienne dzielone (x&nbsp;i&nbsp;y) są sprawdzana pod kątem większości&nbsp;x&nbsp;od&nbsp;y.
+Każda zmiana dowolnej ze zmiennych powoduje obudzenie
+&quot;zainteresowanych&quot; wątków.</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=869
+ style='width:651.75pt;border-collapse:collapse'>
+ <tr>
+  <td style='background:#7A5ADA;padding:0cm 0cm 0cm 0cm'>
+  <p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt;
+  font-family:"Times New Roman",serif'>Przykład użycia warunków sprawdzających</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='background:#DDDDFF;padding:0cm 0cm 0cm 0cm'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>int
+  x,y;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>pthread_mutex_t
+  mutex = PTHREAD_MUTEX_INITIALIZER;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>pthread_cond_t
+  cond   = PTHREAD_COND_INITIALIZER;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>...</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>// (Watek 1)</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>// Czekanie aż x jest większe od y jest </span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>// przeprowadzane następująco:</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>pthread_mutex_lock(&amp;mutex);</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>while
+  (x &lt;= y) {</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>   
+  pthread_cond_wait(&amp;cond, &amp;mutex);</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>}</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>...</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>pthread_mutex_unlock(&amp;mutex);</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>...</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>//
+  (Watek 2)</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>// Kazda modyfikacja x lub y może</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>// powodować zmianę warunków. Należy</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>// obudzić pozostałe wątki, które korzystają</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>// z tego warunku sprawdzającego.</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>pthread_mutex_lock(&amp;mutex);</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>/* zmiana x oraz y */</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>if (x &gt; y) </span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=PL style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>    </span><span style='font-size:10.0pt;font-family:Consolas;
+  color:#212529'>pthread_cond_broadcast(&amp;cond);</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:10.0pt;font-family:Consolas;color:#212529'>pthread_mutex_unlock(&amp;mutex);</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

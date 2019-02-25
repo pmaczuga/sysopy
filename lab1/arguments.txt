@@ -1,0 +1,2 @@
+./test_static.out -s add 10000 search_element 1000 remove 10000 add 10000 remove_and_add 10000
+./test_static.out -d create_array 10000 add 10000 search_element 1000 remove 10000 add 10000 remove_and_add 10000

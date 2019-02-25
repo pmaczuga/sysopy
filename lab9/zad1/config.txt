@@ -1,0 +1,7 @@
+consumers=4
+producers=2
+buffer_size=3
+string_length=30
+thread_time=1
+input_name=pan-tadeusz-extended.txt
+print_mode=simple

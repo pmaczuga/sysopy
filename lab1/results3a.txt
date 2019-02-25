@@ -1,0 +1,136 @@
+Tablica alokowana statycznie, bibliteka statyczna:
+
+add 10000
+        Real time: 1700000.000000
+        System time: 8.000000
+        User time: 162.000000
+search_element 1000
+        Real time: 2010000.000000
+        System time: 1.000000
+        User time: 200.000000
+        Found: 1413
+remove 10000
+        Real time: 850000.000000
+        System time: 0.000000
+        User time: 85.000000
+add 10000
+        Real time: 1640000.000000
+        System time: 2.000000
+        User time: 162.000000
+remove_and_add 10000
+        Real time: 2480000.000000
+        System time: 1.000000
+        User time: 247.000000
+
+
+Tablica alokowana statycznie, biblioteka dzielona:
+
+add 10000
+        Real time: 1740000.000000
+        System time: 11.000000
+        User time: 163.000000
+search_element 1000
+        Real time: 2010000.000000
+        System time: 1.000000
+        User time: 200.000000
+        Found: 1278
+remove 10000
+        Real time: 670000.000000
+        System time: 0.000000
+        User time: 67.000000
+add 10000
+        Real time: 1610000.000000
+        System time: 2.000000
+        User time: 159.000000
+remove_and_add 10000
+        Real time: 2280000.000000
+        System time: 1.000000
+        User time: 227.000000
+
+
+Tablica alokowana dynamicznie, biblioteka statyczna:
+
+create_array 10000
+        Real time: 0.000000
+        System time: 0.000000
+        User time: 0.000000
+add 10000
+        Real time: 1140000.000000
+        System time: 14.000000
+        User time: 100.000000
+search_element 1000
+        Real time: 1890000.000000
+        System time: 1.000000
+        User time: 188.000000
+        Found: 6562
+remove 10000
+        Real time: 20000.000000
+        System time: 1.000000
+        User time: 1.000000
+add 10000
+        Real time: 1150000.000000
+        System time: 15.000000
+        User time: 100.000000
+remove_and_add 10000
+        Real time: 1090000.000000
+        System time: 1.000000
+        User time: 108.000000
+
+
+Tablic alokowana dynamicznie, biblioteka dzielona:
+
+create_array 10000
+        Real time: 0.000000
+        System time: 0.000000
+        User time: 0.000000
+add 10000
+        Real time: 1190000.000000
+        System time: 19.000000
+        User time: 100.000000
+search_element 1000
+        Real time: 1930000.000000
+        System time: 1.000000
+        User time: 192.000000
+        Found: 212
+remove 10000
+        Real time: 20000.000000
+        System time: 2.000000
+        User time: 0.000000
+add 10000
+        Real time: 1170000.000000
+        System time: 14.000000
+        User time: 103.000000
+remove_and_add 10000
+        Real time: 1080000.000000
+        System time: 0.000000
+        User time: 108.000000
+
+
+Tablica alokowana dynamicznie, biblioteka dynamiczna:
+
+create_array 10000
+        Real time: 0.000000
+        System time: 0.000000
+        User time: 0.000000
+add 10000
+        Real time: 1150000.000000
+        System time: 17.000000
+        User time: 98.000000
+search_element 1000
+        Real time: 1890000.000000
+        System time: 2.000000
+        User time: 187.000000
+        Found: 311
+remove 10000
+        Real time: 20000.000000
+        System time: 1.000000
+        User time: 1.000000
+add 10000
+        Real time: 1150000.000000
+        System time: 15.000000
+        User time: 100.000000
+remove_and_add 10000
+        Real time: 1120000.000000
+        System time: 2.000000
+        User time: 110.000000
+

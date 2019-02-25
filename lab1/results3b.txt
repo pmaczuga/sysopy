@@ -1,0 +1,113 @@
+Tablica alokowana dynamicznie, biblioteka statyczna:
+
+O1
+
+create_array 10000
+        Real time: 0.000000
+        System time: 0.000000
+        User time: 0.000000
+add 10000
+        Real time: 1150000.000000
+        System time: 13.000000
+        User time: 102.000000
+search_element 1000
+        Real time: 1910000.000000
+        System time: 2.000000
+        User time: 189.000000
+        Found: 5951
+remove 10000
+        Real time: 10000.000000
+        System time: 1.000000
+        User time: 0.000000
+add 10000
+        Real time: 1160000.000000
+        System time: 17.000000
+        User time: 99.000000
+remove_and_add 10000
+        Real time: 1110000.000000
+        System time: 1.000000
+        User time: 110.000000
+
+O2:
+
+create_array 10000
+        Real time: 0.000000
+        System time: 0.000000
+        User time: 0.000000
+add 10000
+        Real time: 1510000.000000
+        System time: 50.000000
+        User time: 101.000000
+search_element 1000
+        Real time: 1910000.000000
+        System time: 2.000000
+        User time: 189.000000
+        Found: 9114
+remove 10000
+        Real time: 10000.000000
+        System time: 1.000000
+        User time: 0.000000
+add 10000
+        Real time: 1160000.000000
+        System time: 17.000000
+        User time: 99.000000
+remove_and_add 10000
+        Real time: 1080000.000000
+        System time: 1.000000
+        User time: 107.000000
+
+O3:
+
+create_array 10000
+        Real time: 0.000000
+        System time: 0.000000
+        User time: 0.000000
+add 10000
+        Real time: 1360000.000000
+        System time: 35.000000
+        User time: 101.000000
+search_element 1000
+        Real time: 1870000.000000
+        System time: 2.000000
+        User time: 185.000000
+        Found: 5789
+remove 10000
+        Real time: 10000.000000
+        System time: 1.000000
+        User time: 0.000000
+add 10000
+        Real time: 1160000.000000
+        System time: 16.000000
+        User time: 100.000000
+remove_and_add 10000
+        Real time: 1100000.000000
+        System time: 1.000000
+        User time: 109.000000
+
+Os:
+
+create_array 10000
+        Real time: 0.000000
+        System time: 0.000000
+        User time: 0.000000
+add 10000
+        Real time: 1170000.000000
+        System time: 18.000000
+        User time: 99.000000
+search_element 1000
+        Real time: 1960000.000000
+        System time: 3.000000
+        User time: 193.000000
+        Found: 1745
+remove 10000
+        Real time: 10000.000000
+        System time: 1.000000
+        User time: 0.000000
+add 10000
+        Real time: 1150000.000000
+        System time: 16.000000
+        User time: 99.000000
+remove_and_add 10000
+        Real time: 1050000.000000
+        System time: 0.000000
+        User time: 105.000000

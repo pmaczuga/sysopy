@@ -1,0 +1,84 @@
+Copy:
+
+Size of file: 81 920 000 Bytes
+
+Generate        Records: 10000  Size: 8192
+        Real time: 1.430000 sec
+        System time: 0.410000 sec
+        User time: 1.020000 sec
+System copy     Records: 20480000       Size: 4
+        Real time: 42.910000 sec
+        System time: 40.120000 sec
+        User time: 2.790000 sec
+Library copy    Records: 20480000       Size: 4
+        Real time: 4.100000 sec
+        System time: 2.160000 sec
+        User time: 1.940000 sec
+System copy     Records: 160000 Size: 512
+        Real time: 0.430000 sec
+        System time: 0.410000 sec
+        User time: 0.020000 sec
+Library copy    Records: 160000 Size: 512
+        Real time: 0.240000 sec
+        System time: 0.180000 sec
+        User time: 0.060000 sec
+System copy     Records: 20000  Size: 4096
+        Real time: 0.200000 sec
+        System time: 0.190000 sec
+        User time: 0.010000 sec
+Library copy    Records: 20000  Size: 4096
+        Real time: 0.210000 sec
+        System time: 0.200000 sec
+        User time: 0.010000 sec
+System copy     Records: 10000  Size: 8192
+        Real time: 0.180000 sec
+        System time: 0.180000 sec
+        User time: 0.000000 sec
+Library copy    Records: 10000  Size: 8192
+        Real time: 0.200000 sec
+        System time: 0.190000 sec
+        User time: 0.010000 sec
+		
+Size of file: 327 680 000
+		
+Generate        Records: 40000  Size: 8192
+        Real time: 5.710000 sec
+        System time: 2.380000 sec
+        User time: 3.330000 sec
+System copy     Records: 81920000       Size: 4
+        Real time: 174.210000 sec
+        System time: 162.210000 sec
+        User time: 12.000000 sec
+Library copy    Records: 81920000       Size: 4
+        Real time: 15.670000 sec
+        System time: 7.900000 sec
+        User time: 7.770000 sec
+System copy     Records: 640000 Size: 512
+        Real time: 1.750000 sec
+        System time: 1.640000 sec
+        User time: 0.110000 sec
+Library copy    Records: 640000 Size: 512
+        Real time: 0.980000 sec
+        System time: 0.770000 sec
+        User time: 0.210000 sec
+System copy     Records: 80000  Size: 4096
+        Real time: 0.790000 sec
+        System time: 0.750000 sec
+        User time: 0.040000 sec
+Library copy    Records: 80000  Size: 4096
+        Real time: 0.820000 sec
+        System time: 0.750000 sec
+        User time: 0.070000 sec
+System copy     Records: 40000  Size: 8192
+        Real time: 0.730000 sec
+        System time: 0.710000 sec
+        User time: 0.020000 sec
+Library copy    Records: 40000  Size: 8192
+        Real time: 0.790000 sec
+        System time: 0.740000 sec
+        User time: 0.050000 sec
+		
+Wnioski:
+Dla bardzo małego bufora (4 bajty) różnica w prędkości działanie funkcji kopiujacej jest ogromna, funkcja biblioteczna jest ok. 10 razy szybsza. 
+Dla bufora 512 bajtów i większych różnica ta jest praktycznie nieznacząca.
+

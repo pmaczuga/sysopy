@@ -1,0 +1,507 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1250">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+@font-face
+	{font-family:inherit;
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:18.0pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+pre
+	{mso-style-link:"HTML Preformatted Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-link:"HTML Preformatted";
+	font-family:"Courier New";}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:18.0pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wątki
+- materiały pomocnicze</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:18.0pt;font-family:"inherit",serif;color:#373A3C'>Informacje
+wstępne</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>W
+obrębie jednego procesu może istnieć wiele wątków, które działają w obrębie
+jednej przestrzeni adresowej i są wykonywane współbieżnie. Proces kończy swoje
+działanie, gdy zakończą swoje działanie wszystkie wątki (uwaga - zwrócenie
+wartości z funkcji&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>main</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;kończy działanie wszystkich wątków). Wątki są
+identyfikowane za pomocą ID typu&nbsp;</span><span style='font-size:11.5pt;
+font-family:"Courier New";color:#373A3C'>pthread_t</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>.
+Każdy wątek posiada własny odrębny stos.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wątki
+współdzielą:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>przestrzeń
+     adresową (w szczególności zmienne globalne)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>identyfikatory
+     związane z procesem (PID, UID, PPID, ...)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>deskryptory
+     plików</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>sposób obsługi
+     sygnałów (signal dispositioin - ignorowanie/obsługa domyślna/handler)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>limity i
+     liczniki zużycia zasobów</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>inne: rygle na
+     pliki, umask, katalog główny/bieżący, wartość nice</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Każdy
+wątek posiada własne:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>thread ID (TID)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>maska</span></b><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;sygnałów</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>wartość errno</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>dane własne
+     (thread local)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>stos (w
+     szczególności zmienne lokalne)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>inne: polityki
+     szeregowania, CPU affinity, security capabilities, alternate signal stack</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Do
+obsługi wątków w standardzie POSIX służy biblioteka pthreads. Aby jej używać,
+należy dołączyć plik nagłówkowy pthreads.h oraz dolinkować bibliotekę pthread (</span><span
+style='font-size:11.5pt;font-family:"Courier New";color:#373A3C'>-lpthread</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>)</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:18.0pt;font-family:"inherit",serif;color:#373A3C'>Tworzenie
+wątków</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Do
+tworzenia nowych wątków służy funkcja pthread_create</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int pthread_create(pthread_t *thread, const pthread_attr_t
+*attr,&nbsp;void *(*start_routine) (void *), void *arg)</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>gdzie</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Courier New"'>thread</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;-
+     wskaźnik na miejsce gdzie zapisany zostanie identyfikator utworzonego
+     wątku</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Courier New"'>attr</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;-
+     dodatkowe ustawienia (opcjonalne,&nbsp;</span><span style='font-size:11.5pt;
+     font-family:"Courier New"'>NULL</span><span style='font-size:11.5pt;
+     font-family:"Segoe UI",sans-serif'>&nbsp;= ustawienia domyślne)</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Courier New"'>start_routine</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;- adres
+     funkcji, która ma zostać wykonana w utworzonym wątku</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Courier New"'>arg</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;-
+     argument, z którym ma zostać wywołana</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja
+na którą wskazuje&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>start_routine</span><span style='font-size:11.5pt;font-family:
+"Segoe UI",sans-serif;color:#373A3C'>&nbsp;przyjmuje i zwraca wskaźnik na
+dowolne dane (</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>void*</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>). Nie ma gwarancji, że nowo utworzony wątek zacznie swoje działanie
+natychmiast - nie należy zatem przekazywać jako&nbsp;</span><span
+style='font-size:11.5pt;font-family:"Courier New";color:#373A3C'>arg</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;adresów
+zmiennych lokalnych które mogą ulec zniszczeniu zanim nowy wątek zacznie
+działać.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Typ
+identyfikatora wątku&nbsp;</span><span style='font-size:11.5pt;font-family:
+"Courier New";color:#373A3C'>pthread_t</span><span style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;jest zależny od
+implementacji - może nie być to typ całkowitoliczbowy. Do porównywania równości
+dwóch wartości typu&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>pthread_t</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;służy funkcja&nbsp;</span><span style='font-size:11.5pt;
+font-family:"Courier New";color:#373A3C'>pthread_equal</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int pthread_equal(pthread_t tid1, pthread_t tid2);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>zwracająca
+0 jeśli&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>tid1</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;nie jest równy&nbsp;</span><span style='font-size:11.5pt;
+font-family:"Courier New";color:#373A3C'>tid2</span><span style='font-size:
+11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>. Swój własny
+identyfikator wątek może pobrać przy użyciu&nbsp;</span><span style='font-size:
+11.5pt;font-family:"Courier New";color:#373A3C'>pthread_self</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>pthread_t pthread_self(void);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Argument
+attr pozwala kontrolować różne aspekty działania tworzonego wątku. Przed
+przekazaniem adresu struktury pthread_attr_t należy ją zainicjalizować przy
+użyciu funkcji&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>pthread_attr_init:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int pthread_attr_init(pthread_attr_t *attr);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Po
+wywołaniu pthread_create należy zwolnić potencjalnie zaalokowane przez to
+wywołanie zasoby używając funkcji&nbsp;</span><span style='font-size:11.5pt;
+font-family:"Courier New";color:#373A3C'>pthread_attr_destroy</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int pthread_attr_destroy(pthread_attr_t *attr);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:18.0pt;font-family:"inherit",serif;color:#373A3C'>Cykl życia
+wątku</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Działanie
+wątku może zostać zakończone w wyniku kilku zdarzeń:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>jeśli wątek
+     główny zakończy swoje działanie poprzez zwrócenie wartości z funkcji main,
+     cały proces (wszystkie jego wątki) kończy swoje działanie</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>jeśli
+     którykolwiek wątek procesu wywoła&nbsp;</span><span style='font-size:11.5pt;
+     font-family:"Courier New"'>exit</span><span style='font-size:11.5pt;
+     font-family:"Segoe UI",sans-serif'>,&nbsp;</span><span style='font-size:
+     11.5pt;font-family:"Courier New"'>_Exit</span><span style='font-size:11.5pt;
+     font-family:"Segoe UI",sans-serif'>&nbsp;lub&nbsp;</span><span
+     style='font-size:11.5pt;font-family:"Courier New"'>_exit</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>, cały proces
+     kończy swoje działanie</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>jeśli
+     którykolwiek wątek otrzyma sygnał, którego domyślnym sposobem obsługi jest
+     zakończenie procesu, cały proces kończy swoje działanie</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>jeśli wątek
+     zwróci wartość ze swojej funkcji, kończy on swoje działanie</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>jeśli wątek
+     wywoła&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New"'>pthread_exit</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>, kończy on
+     swoje działanie</span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>jeśli wątek
+     zostanie anulowany przez inny wątek, kończy on swoje działanie</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Funkcja</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>void pthread_exit(void *rval_ptr);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>przyjmuje
+wartość która zostanie użyta jako wartość zwrócona przez wątek. Zwrócenie
+wartości&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>val</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>&nbsp;z funkcji wątku jest równoważne z wywołaniem&nbsp;</span><span
+style='font-size:11.5pt;font-family:"Courier New";color:#373A3C'>pthread_exit(val)</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;(poza
+wątkiem głównym - w nim zwrócenie&nbsp;</span><span style='font-size:11.5pt;
+font-family:"Courier New";color:#373A3C'>val</span><span style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;jest równoważne z</span><span
+style='font-size:11.5pt;font-family:"Courier New";color:#373A3C'>exit(val)</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>).
+Wywołanie&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>pthread_exit</span><span style='font-size:11.5pt;font-family:
+"Segoe UI",sans-serif;color:#373A3C'>&nbsp;z wątku głównego powoduje
+zakończenie wątku głównego, ale pozostałe wątki nadal mogą działać - cały
+proces zakończy się wówczas dopiero gdy zakończą swoje działanie wszystkie
+utworzone wątki, a kodem wyjścia procesu będzie 0.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Przerwać
+działanie wątku z innego wątku można przy pomocy funkcji&nbsp;</span><span
+style='font-size:11.5pt;font-family:"Courier New";color:#373A3C'>pthread_cancel</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int pthread_cancel(pthread_t tid);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Reakcja
+wątku na bycie anulowanym zależy od jego ustawień. Wątek może dopuszczać
+(zachowanie domyślne) lub odrzucać żądania anulowania, sterować tym zachowaniem
+można przy użyciu funkcji&nbsp;pthread_setcancelstate</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int pthread_setcancelstate(int state, int *oldstate);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>podając
+jako pierwszy argument&nbsp;</span><span style='font-size:11.5pt;font-family:
+"Courier New";color:#373A3C'>PTHREAD_CANCEL_ENABLE</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;lub&nbsp;</span><span
+style='font-size:11.5pt;font-family:"Courier New";color:#373A3C'>PTHREAD_CANCEL_DISABLE</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>.
+Anulowanie wątku z zablokowanym anulowaniem powoduje, że wątek zostanie
+anulowany w chwili gdy z powrotem odblokuje możliwość anulowania. Jeśli wątek
+dopuszcza anulowanie, może to robić w dwóch trybach:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Courier New"'>PTHREAD_CANCEL_DEFERRED</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;(domyślnie)
+     - wątek kontynuuje swoje działanie do momentu napotkania tzw.&nbsp;<i>cancellation
+     point</i></span></li>
+ <li class=MsoNormal style='color:#373A3C;line-height:normal;background:white'><span
+     style='font-size:11.5pt;font-family:"Courier New"'>PTHREAD_CANCEL_ASYNCHRONOUS</span><span
+     style='font-size:11.5pt;font-family:"Segoe UI",sans-serif'>&nbsp;- wątek
+     kończy swoje działanie natychmiast</span></li>
+</ul>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Zmienić
+tryb anulowania można przy pomocy funkcji&nbsp;</span><span style='font-size:
+11.5pt;font-family:"Courier New";color:#373A3C'>pthread_setcanceltype</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int pthread_setcanceltype(int type, int *oldtype);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Cancellation
+point to wywołanie jednej z wymienionej jako takowy przez standard POSIX
+funkcji (np.&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>read</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>,&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>write</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>,&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>pause</span><span style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;
+color:#373A3C'>). W szczególności cancellation point stanowi wywołanie
+funkcji&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>pthread_testcancel</span><span style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:#373A3C'>.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Domyślnie
+po zakończeniu działania wątku wartość którą zwrócił można pobrać przy użyciu
+funkcji&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>pthread_join</span><span style='font-size:11.5pt;font-family:
+"Segoe UI",sans-serif;color:#373A3C'>:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int pthread_join(pthread_t thread, void **rval_ptr);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Jeśli
+wątek został anulowany, pod&nbsp;</span><span style='font-size:11.5pt;
+font-family:"Courier New";color:#373A3C'>rval_ptr</span><span style='font-size:
+11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;zapisana zostanie
+wartość&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>PTHREAD_CANCELED</span><span style='font-size:11.5pt;font-family:
+"Segoe UI",sans-serif;color:#373A3C'>. Jeśli chcemy, by dane zakończonego wątku
+nie były przechowywane do czasu wywołania pthread_join, a były usuwane
+natychmiast, możemy wątek uczynić wątkiem odłączonym. Można to uczynić na dwa
+sposoby: w momencie tworzenia wątku, lub później.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Aby
+utworzyć wątek od razu jako wątek odłączony, należy do&nbsp;</span><span
+style='font-size:11.5pt;font-family:"Courier New";color:#373A3C'>pthread_create</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;przekazać
+adres struktury&nbsp;</span><span style='font-size:11.5pt;font-family:"Courier New";
+color:#373A3C'>pthread_attr_t</span><span style='font-size:11.5pt;font-family:
+"Segoe UI",sans-serif;color:#373A3C'>&nbsp;po wywołaniu na niej&nbsp;</span><span
+style='font-size:11.5pt;font-family:"Courier New";color:#373A3C'>pthread_attr_setdetachstate</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int pthread_attr_setdetachstate(pthread_attr_t *attr, int
+detachstate);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>jako
+drugi argument przekazując&nbsp;</span><span style='font-size:11.5pt;
+font-family:"Courier New";color:#373A3C'>PTHREAD_CREATE_DETACHED</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Istniejący
+wątek można po utworzeniu odłączyć przy użyciu funkcji&nbsp;</span><span
+style='font-size:11.5pt;font-family:"Courier New";color:#373A3C'>pthread_detach</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int pthread_detach(pthread_t tid);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:18.0pt;font-family:"inherit",serif;color:#373A3C'>Wątki i
+sygnały</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Sygnały
+są dostarczane do jednego wątku w procesie. Sygnały związane ze zdarzeniami
+sprzętowymi są z reguły dostarczane do wątku, który je spowodował, pozostałe -
+arbitralnie.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Wątki
+mają odrębne maski sygnałów, ale wspólne ustawienia ich obsługi (signal
+disposition). Do ustawienia maski sygnału wątku służy funkcja&nbsp;</span><span
+style='font-size:11.5pt;font-family:"Courier New";color:#373A3C'>pthread_sigmask:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int pthread_sigmask(int how, const sigset_t* set,&nbsp;sigset_t*
+oset);</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>o
+sygnaturze identycznej do&nbsp;</span><span style='font-size:11.5pt;font-family:
+"Courier New";color:#373A3C'>sigprocmask</span><span style='font-size:11.5pt;
+font-family:"Segoe UI",sans-serif;color:#373A3C'>. Działanie&nbsp;</span><span
+style='font-size:11.5pt;font-family:"Courier New";color:#373A3C'>sigprocmask</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;dla
+programu wielowątkowego jest niezdefiniowane.</span></p>
+
+<p class=MsoNormal style='line-height:normal;background:white'><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>Aby
+wysłać sygnał do konkretnego wątku, należy użyć funkcji&nbsp;</span><span
+style='font-size:11.5pt;font-family:"Courier New";color:#373A3C'>pthread_kill</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>&nbsp;lub&nbsp;</span><span
+style='font-size:11.5pt;font-family:"Courier New";color:#373A3C'>pthread_sigqueue</span><span
+style='font-size:11.5pt;font-family:"Segoe UI",sans-serif;color:#373A3C'>:&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal;background:white'><span style='font-size:10.0pt;font-family:"Courier New";
+color:#212529'>int pthread_kill(pthread_t thread, int signo);</span><span
+style='font-size:10.0pt;font-family:Consolas;color:#212529'><br>
+</span><span style='font-size:10.0pt;font-family:"Courier New";color:#212529'>int
+pthread_sigqueue(pthread_t thread, int sig, const union sigval value);</span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
