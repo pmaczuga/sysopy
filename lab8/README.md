@@ -2,7 +2,7 @@
 ## Filtrowanie obrazów
 Jedną z najprostszych operacji jaką można wykonać na obrazie jest operacja filtrowania (splotu). Operacja ta przyjmuje na wejściu dwie macierze:
 
-Macierz ![eq1](/readme_files/eq1.gif) reprezentującą obraz. Dla uproszczenia rozważamy jedynie obrazy w 256 odcieniach szarości. Każdy element macierzy I jest więc liczbą całkowitą z zakresu 0 do 255.
+Macierz ![eq1](sysopy/lab8/readme_files/eq1.gif) reprezentującą obraz. Dla uproszczenia rozważamy jedynie obrazy w 256 odcieniach szarości. Każdy element macierzy I jest więc liczbą całkowitą z zakresu 0 do 255.
 Macierz Kc×c reprezentującą filtr. Elementami tej macierzy są liczby zmiennoprzecinkowe. Dla uproszczenia zakładamy, że elementy macierzy K sumują się do jedności: ∑ci=1∑cj=1K[i,j]=1.
 Operacja filtrowania tworzy nowy obraz J, którego piksele mają wartość:
 
