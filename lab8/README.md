@@ -36,8 +36,8 @@ M
 ...
 ```
 
-gdzie: ```W``` to szerokość obrazu w pikselach, ```H``` to wysokość obrazu w pikselach a M to maksymalna wartość piksela. Zakładamy, że obsługujemy jedynie obrazy w 256 odcieniach szarości: od 0 do 255 (a więc![eq13](https://github.com/pmaczuga/sysopy/blob/master/lab8/readme_files/eq13.gif)). Po nagłówku, w pliku powinno być zapisanych ```W*H``` liczb całkowitych reprezentujących wartości kolejnych pikseli. Liczby rozdzielone są białymi znakami (np. spacją). Piksele odczytywane są wierszami, w kolejności od lewego górnego do prawego dolnego rogu obrazu.
+gdzie: ```W``` to szerokość obrazu w pikselach, ```H``` to wysokość obrazu w pikselach a M to maksymalna wartość piksela. Zakładamy, że obsługujemy jedynie obrazy w 256 odcieniach szarości: od 0 do 255 (a więc ![eq13](https://github.com/pmaczuga/sysopy/blob/master/lab8/readme_files/eq13.gif)). Po nagłówku, w pliku powinno być zapisanych ```W*H``` liczb całkowitych reprezentujących wartości kolejnych pikseli. Liczby rozdzielone są białymi znakami (np. spacją). Piksele odczytywane są wierszami, w kolejności od lewego górnego do prawego dolnego rogu obrazu.
 
 Przykładowe obrazy w formacie ASCII PGM (jak również opis formatu) można znaleźć pod adresem: http://people.sc.fsu.edu/~jburkardt/data/pgma/pgma.html
 
-W pierwszej linii pliku z definicją filtru powinna znajdować się liczba całkowita c określająca rozmiar filtru. Dalej, plik powinien zawierać c2 liczb zmiennoprzecinkowych określających wartości elementów filtru (w kolejności wierszy, od elementu K[1,1] do elementu ![eq14](https://github.com/pmaczuga/sysopy/blob/master/lab8/readme_files/eq14.gif)).
+W pierwszej linii pliku z definicją filtru powinna znajdować się liczba całkowita c określająca rozmiar filtru. Dalej, plik powinien zawierać ![eq14](https://github.com/pmaczuga/sysopy/blob/master/lab8/readme_files/eq14.gif) liczb zmiennoprzecinkowych określających wartości elementów filtru (w kolejności wierszy, od elementu ![eq15](https://github.com/pmaczuga/sysopy/blob/master/lab8/readme_files/eq15.gif) do elementu ![eq16](https://github.com/pmaczuga/sysopy/blob/master/lab8/readme_files/eq16.gif)).
