@@ -2,7 +2,7 @@
 ## IPC - pamieć wspólna, semafory
 Przydatne funkcje
 System V:  
-```<sys/shm.h> <sys/ipc.h>``` - ```shmget```, ```shmclt```, ```shmat```, ```shmdt```
+```<sys/shm.h> <sys/ipc.h>``` - ```shmget```, ```shmclt```, ```shmat```, ```shmdt```  
 POSIX:  
 ```<sys/mman.h>``` - ```shm_open```, ```shm_close```, ```shm_unlink```, ```mmap```, ```munmap```
 
